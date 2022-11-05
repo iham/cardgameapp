@@ -3,8 +3,14 @@ Playing Cards is FUN!
 
 ![Logo](logo.jpg)
 
+## Team
+- Eric Langer 
+- Felix Ossmann
+- Hannes Brottragger
+- Markus Hilbert
+
 ## Targets
-Create a small project in Java using OOP concepts and prozedures
+Create a small but extendable project in Java using OOP concepts and prozedures.
 
 ### Prozedures
 - if/else
@@ -47,10 +53,9 @@ Create a small project in Java using OOP concepts and prozedures
 - Write a code documentation with javadoc
 
 ## NOT targets
-- Developing a (G)UI
-- Developing a Gaming AI to play against
-- Develop a production ready application
-
+- a (G)UI
+- a Gaming AI to play against
+- a production ready application
 
 # CardGameApp
 Base idea of this project is to create an extensible Base of (abstract) Types, to create and play several different Card Games.
