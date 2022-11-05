@@ -4,32 +4,43 @@
 Playing Cards is FUN!
 
 ## Targets
-- Create a small project in Java using OOP concepts
-  - OOP
-    - Encapsulation
-    - Inheritance
-    - Abstraction
-    - Interfaces
+Create a small project in Java using OOP concepts and prozedures
+- Prozedures
+  - if/else
+  - case
+  - while/for
+  - early return
+- OOP
+  - Encapsulation
+  - Inheritance
+  - Abstraction
+  - Interfaces
   - Types
     - Primitive Types
     - Complex Types
   - Classes
-    - Constructors
-    - Setters & Getters
-    - Modifiers
-      - public
-      - private 
-      - protected
-      - abstract
-      - final
-    - Return value Type
-  - Exceptions
-    - TooManyPlayers
-    - NotEnoughPlayers
-    - PlayerNotOldEnough
-    - NoMoreCardsOnStack
-    - 
-- Logging via Framework "???"
+  - Constructors
+  - Setters & Getters
+  - Modifiers
+    - public
+    - private 
+    - protected
+    - abstract
+    - final
+- Return value Type
+- Java STD Classes:
+- Scanner (Terminal input)
+- StringBuffer
+- File I/O
+- Date
+- Exceptions
+- TooManyPlayers
+- NotEnoughPlayers
+- PlayerNotOldEnough
+- NoMoreCardsOnStack
+
+
+- Logging via java.util.logging.*
 - Testing via Framework "???"
 - Write a project documentation in MarkDown
 - Write a code documentation with javadoc
@@ -44,10 +55,9 @@ Playing Cards is FUN!
 Base idea of this project is to create an extensible Base of (abstract) Types, to create and play several different Card Games.
 Each Game implements it's own set of rules how
 
-Possible Games are:
-[List of Card Games by Amount of Cards](https://de.wikipedia.org/wiki/Liste_von_Kartenspielen_nach_Kartenanzahl_geordnet)
+Possible Games are: ([List of Card Games by Amount of Cards](https://de.wikipedia.org/wiki/Liste_von_Kartenspielen_nach_Kartenanzahl_geordnet))
 - BlackJack (17+4)
-- Schnapsen (Cards could be "Französich" or "DoppelDeutsch")
+- Schnapsen (Cards could be "Französisch" or "DoppelDeutsch")
   - Schnapsen
   - BauernSchnapsen
   - TalonSchnapsen
