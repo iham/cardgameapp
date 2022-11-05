@@ -117,6 +117,34 @@ Allows a Game and Player to be gamble.
 
 
 ### Code Structure
+Use [Maven Styled Structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
 - CardGameApp
   - src
+    - card
+      - Card.java
+      - PokerCard.java
+      - images
+    - deck
+      - Deck.java
+      - PokerDeck.java
+      - cards
+        - uno.csv
+        - schnapsen.csv|.json    
+    - pile
+      - 
+    - person
+    - game
+      - Game.java
+      - PokerGame.java
+      - BlackJackGame.java
+  - test
+    - CardTest.java
+    - PokerCardTest.java
   - data
+    - cards
+      - uno.csv
+      - schnapsen.csv|.json
+
+
+## Storage (optional)
+- Hibernate (ORM)
