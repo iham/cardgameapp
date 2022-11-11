@@ -74,7 +74,7 @@ Possible Games are: ([List of Card Games by Amount of Cards](https://de.wikipedi
 
 ### Diagram
 <!-- insert image here -->
-![Diagram](model.png)
+![Diagram](uml-models/overview.png)
 
 ### Card
 Is an abstract class to represent a gaming card in a Deck of Cards.
