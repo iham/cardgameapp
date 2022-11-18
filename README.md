@@ -4,10 +4,10 @@ Playing Cards is FUN!
 ![Logo](logo.jpg)
 
 ## Team
-- Eric Langer 
-- Felix Ossmann
-- Hannes Brottragger
-- Markus Hilbert
+- Eric Langer (Docs)
+- Felix Ossmann (Testing)
+- Hannes Brottragger (Data)
+- Markus Hilbert (Lead/Architecture)
 
 ## Targets
 Create a small but extendable project in Java using OOP concepts and prozedures.
