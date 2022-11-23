@@ -10,6 +10,5 @@ public class Classic extends Pack {
     }
 
     protected void setCards() {
-        // define Cards based on enums
     }
 }

@@ -1,6 +1,6 @@
-package msc.ddb.international.packs;
+package msc.ddb.international.suits;
 
-public enum Suit {
+public enum French {
     CLUB("Club"),
     DIAMOND("Diamond"),
     HEART("Heart"),
@@ -8,7 +8,7 @@ public enum Suit {
 
     String name;
 
-    private Suit(String name) {
+    private French(String name) {
         this.name = name;
     }
 

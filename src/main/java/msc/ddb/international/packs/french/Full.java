@@ -10,6 +10,6 @@ public class Full extends Pack {
     }
 
     protected void setCards() {
-        // define Cards based on enums
+        
     }
 }
