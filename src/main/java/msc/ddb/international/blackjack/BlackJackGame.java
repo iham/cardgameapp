@@ -18,6 +18,15 @@ public class BlackJackGame {
         players.add(player);
     }
 
+    public void startGame() {
+        // if players ... play!
+    }
+
+    public void writeGame() {
+        // write game to filesystem
+        // timestamp as filename
+        // write tostring to txt file or json
+    }
     @Override
     public String toString() {
         String output = "";

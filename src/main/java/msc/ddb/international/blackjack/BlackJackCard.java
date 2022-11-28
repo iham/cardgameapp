@@ -4,6 +4,12 @@ public class BlackJackCard {
     private BlackJackSuit suit;
     private BlackJackRank rank;
 
+    /**
+     * A BlackJackCard is defined by a Suit and Rank
+     * ...
+     * @param suit
+     * @param rank
+     */
     public BlackJackCard(BlackJackSuit suit, BlackJackRank rank) {
         setSuit(suit);
         setRank(rank);
