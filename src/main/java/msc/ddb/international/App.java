@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 /**
  * Hello world!
- *
+ * 
  */
 public class App 
 {
     static Scanner input = new Scanner(System.in);
+    
+    /** 
+     * @param args
+     */
     public static void main( String[] args )
     {
         // create a game

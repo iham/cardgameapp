@@ -17,29 +17,55 @@ public class Card {
         setValue(value);
     }
     
+    /**
+     * @param suit
+     */
     private void setSuit(Suit suit) {
         this.suit = suit;
     }
+    
+    /** 
+     * @param rank - this is a Rank ENUM value
+     */
     private void setRank(Rank rank) {
         this.rank = rank;
     }
+    
+    /** 
+     * @param value
+     */
     public void setValue(int value) {
         this.value = value;
     }
 
+    
+    /** 
+     * @return Suit
+     */
     public Suit getSuit() {
         return suit;
     }
+    
+    /** 
+     * @return Rank
+     */
     public Rank getRank() {
         return rank;
     }
+    
+    /** 
+     * @return int
+     */
     public int getValue() {
         return value;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return rank + "(" + value + ") of " + suit;
     }
-    
 }

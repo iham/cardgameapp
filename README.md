@@ -4,53 +4,54 @@ Playing Cards is FUN!
 ![Logo](logo.jpg)
 
 ## Team
-- Eric Langer (Docs)
+- Eric Langer (Docs for Code)
 - Felix Ossmann (Testing)
-- Hannes Brottrager (Data)
+- Hannes Brottrager (Logging/Data)
 - Markus Hilbert (Lead/Architecture)
 
 ## Targets
 Create a small but extendable project in Java using OOP concepts and prozedures.
 
 ### Prozedures
-- if/else
-- case
-- while/for
-- early return
+- [x] if/else
+- [x] case
+- [x] while/for
+- [x] early return
 
 ### OOP
-- Encapsulation
-- Inheritance
-- Abstraction
-- Interfaces
-- Types
-  - Primitive Types
-  - Complex Types
+- [x] Encapsulation
+- [x] Inheritance
+- [~] Abstraction
+- [ ] Interfaces
+- [x] Types
+- [x] Enumeration
+  - [x] Primitive Types
+  - [x] Complex Types
 - Classes
-  - Constructors
-  - Setters & Getters
-  - Modifiers
-    - public
-    - private 
-    - protected
-    - abstract
-    - final
-  - Return value Type
+  - [x] Constructors
+  - [x] Setters & Getters
+  - [x] Modifiers
+    - [x] public
+    - [x] private 
+    - [x] protected
+    - [x] abstract
+    - [x] final
+  - [x] Return value Type
 
 ### Java STD Classes:
-- Scanner (Terminal input)
-- StringBuffer
-- File I/O
-- Date
+- [x] Scanner (Terminal input)
+- [ ] StringBuffer
+- [~] File I/O
+- [~] Date
 
 ### Frameworks
-- Logging via java.util.logging.*
-- Testing via "JUnit"
-- Code versioning via GIT
+- [~] Logging via java.util.logging.*
+- [~] Testing via "JUnit"
+- [x] Code versioning via GIT
 
 ### Documentation
-- Write a project documentation in MarkDown
-- Write a code documentation with javadoc
+- [x] Write a project documentation in MarkDown
+- [~] Write a code documentation with javadoc
 
 ## NOT targets
 - a (G)UI
