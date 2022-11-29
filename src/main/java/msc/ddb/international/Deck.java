@@ -1,26 +1,27 @@
-package msc.ddb.international.blackjack;
+package msc.ddb.international;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class BlackJackDeck {
-    private ArrayList<BlackJackCard> cards = new ArrayList<BlackJackCard>();
+public class Deck {
+    private ArrayList<Card> cards = new ArrayList<Card>();
+    private final int packsUsed = 6;
 
-    public BlackJackDeck() {
+    public Deck() {
         setCards();
         shuffle();
     }
 
     // BlackJack consists of 6 Packs of BlackJack Cards
     private void setCards() {
-        BlackJackPack pack = new BlackJackPack("BlackJackPack");
-        for (int i = 0; i < 6; i++) {
+        Pack pack = new Pack();
+        for (int i = 0; i < packsUsed; i++) {
             cards.addAll(pack.getCards()); 
         }
     }
 
-    public ArrayList<BlackJackCard> getCards() {
+    public ArrayList<Card> getCards() {
         return cards;
     }
 
@@ -28,13 +29,13 @@ public class BlackJackDeck {
         Collections.shuffle(cards, new Random());
     }
 
-    public BlackJackCard getCard() {
+    public Card pickCard() {
         return cards.remove( cards.size() - 1 );
     }
     @Override
     public String toString() {
         String output = "";
-        for (BlackJackCard card : cards) {
+        for (Card card : cards) {
             output += card + "\n";
         }
         return output;

@@ -63,11 +63,11 @@ Each Game implements it's own set of rules how
 
 Possible Games are: ([List of Card Games by Amount of Cards](https://de.wikipedia.org/wiki/Liste_von_Kartenspielen_nach_Kartenanzahl_geordnet))
 - BlackJack (17+4)
+- Classic Uno
 - Schnapsen (Cards could be "Französisch" or "DoppelDeutsch")
   - Schnapsen
   - BauernSchnapsen
   - TalonSchnapsen (DreierSchnapsen)
-- Uno
 - Rommé
 - etc
 
@@ -89,37 +89,25 @@ Is a set of Cards.
 Each Card is unique in **most** decks.
 
 ### Player
-Is a Person with a PlayerName.
+Is a Person with a PlayerName and a Hand of Cards.
 
-### Dealer
-Is a Person dealing Cards to Player(s).
+### Hand
+Is a List of Cards taken by the Player.
 
 ### Game
 The specific game itself. Depending on the game, rules, decks, amount of players, ... are different.
 
-### Pick Pile
-Is one or more Cards Decks flattened to a random List of Cards from given Decks.
-Players or Dealer can pull one or more Cards from this Pile.
-
-### Discard Pile
-Is a List of Cards, Dealers or Players discard.
-
-### Tray
-A Game and/or a Player can have a Tray for Cards already played or tricks
-
-### Exceptions
+### Possible Exceptions
 #### Game
+- NoPlayerSet
 - TooManyPlayers
 - NotEnoughPlayers
 - PlayerNotOldEnough
-- NoMoreCardsOnStack
-- StackIsEmpty
+- NoMoreCardsOnDeck
+- DeckIsEmpty
 
 ### Interfaces
-
-#### Stakeable
-Allows a Game and Player to be gamble.
-
+... still to come on a more suffisticated implementation.
 
 ### Code Structure
 Use [Maven Styled Structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)

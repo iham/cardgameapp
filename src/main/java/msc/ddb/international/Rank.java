@@ -1,6 +1,6 @@
-package msc.ddb.international.blackjack;
+package msc.ddb.international;
 
-public enum BlackJackRank {
+public enum Rank {
     DEUCE("Deuce", 2),
     THREE("Three", 3),
     FOUR("Four", 4),
@@ -18,7 +18,7 @@ public enum BlackJackRank {
     String name;
     int value;
 
-    BlackJackRank(String name, int value) {
+    Rank(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -28,6 +28,6 @@ public enum BlackJackRank {
     }
     @Override
     public String toString() {
-        return name + " (" + value + ")";
+        return name;
     }
 }

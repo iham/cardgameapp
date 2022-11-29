@@ -1,9 +1,6 @@
 package msc.ddb.international;
 
-import msc.ddb.international.blackjack.BlackJackCard;
-import msc.ddb.international.blackjack.BlackJackDeck;
-import msc.ddb.international.blackjack.BlackJackGame;
-import msc.ddb.international.blackjack.BlackJackPack;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -11,26 +8,40 @@ import msc.ddb.international.blackjack.BlackJackPack;
  */
 public class App 
 {
+    static Scanner input = new Scanner(System.in);
     public static void main( String[] args )
     {
-        // BlackJackPack pack = new BlackJackPack("BlackJackPack");
-        // System.out.println(pack.getCards().size());
-        // System.out.println(pack);
-        // BlackJackDeck deck = new BlackJackDeck();
-        // System.out.println(deck.getCards().size());
-        // System.out.println(deck);
-        // BlackJackCard lastCardFromDeck = deck.getCard();
-        // System.out.println(lastCardFromDeck);
-        // System.out.println(deck.getCards().size());
-        // lastCardFromDeck = deck.getCard();
-        // System.out.println(lastCardFromDeck);
-
-        BlackJackGame game = new BlackJackGame();
-        Person player01 = new Player("Player 01");
-        Person player02 = new Player("Player 02");
-        game.addPlayer(player01);
-        game.addPlayer(player02);
+        // create a game
+        Game game = new Game();
+        Player player01 = new Player("Harald");
+        game.setPlayer(player01);
         game.startGame();
+        // lets play!
+        System.out.println("--------------------\nWelcome to BlackJack!\n\n");
+        int decision = 1;
+        while(decision == 1) {
+            try{
+                System.out.println("Would you like to:\n1) Pick another Card?\n2) Chicken out?");
+                decision = input.nextInt();
+                switch (decision) {
+                    case 1:
+                        game.dealCard();
+                        System.out.println(player01.getHand());
+                        break;
+                    case 2:
+                        game.stopGame();
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            catch(Exception e){
+                System.out.println("Invalid Input");
+                input.next();
+            }
+        }
+        // how did it run
         System.out.println(game);
     }
 }
