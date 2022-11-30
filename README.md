@@ -38,11 +38,33 @@ Create a small but extendable project in Java using OOP concepts and prozedures.
     - [x] final
   - [x] Return value Type
 
-### Java STD Classes:
+### Java STD Classes
 - [x] Scanner (Terminal input)
 - [ ] StringBuffer
 - [~] File I/O
 - [~] Date
+
+### Possible Exceptions
+#### Game
+- NoPlayerSet
+- TooManyPlayers
+- NotEnoughPlayers
+- PlayerNotOldEnough
+- NoMoreCardsOnDeck
+- DeckIsEmpty
+
+### Advanced Concepts / Design Patterns
+ - [ ] ABSTRACTION
+ - [ ] INTERFACE
+ - [ ] SINGLETON
+ - [ ] STRATEGY
+ - [ ] COMMAND
+ - [ ] STATE
+ - [ ] MEMENTO
+ - [ ] PROXY
+
+### Interfaces
+... still to come on a more suffisticated implementation.
 
 ### Frameworks
 - [~] Logging via java.util.logging.*
@@ -69,7 +91,7 @@ Possible Games are: ([List of Card Games by Amount of Cards](https://de.wikipedi
   - Schnapsen
   - BauernSchnapsen
   - TalonSchnapsen (DreierSchnapsen)
-- Rommé
+- Rummy
 - etc
 
 
@@ -77,72 +99,11 @@ Possible Games are: ([List of Card Games by Amount of Cards](https://de.wikipedi
 <!-- insert image here -->
 ![Diagram](uml-models/overview.png)
 
-### Card
-Is an abstract class to represent a gaming card in a Deck of Cards.
 
 ### Card designs
 - [Poker](https://www.piatnik-individual.com/produkt/4-eckzeichen-nur-rueckseite-gestalten-hochladen/)
 - [Französische Schnapskarten](https://www.piatnik-individual.com/produkt/franzoesische-25-karten-nur-rueckseite-gestalten-hochladen/)
 - [Doppeldeutsche Schnapskarten](https://www.piatnik-individual.com/produkt/doppeldeutsche-36-karten-nur-rueckseite-gestalten/)
-
-### Deck
-Is a set of Cards.
-Each Card is unique in **most** decks.
-
-### Player
-Is a Person with a PlayerName and a Hand of Cards.
-
-### Hand
-Is a List of Cards taken by the Player.
-
-### Game
-The specific game itself. Depending on the game, rules, decks, amount of players, ... are different.
-
-### Possible Exceptions
-#### Game
-- NoPlayerSet
-- TooManyPlayers
-- NotEnoughPlayers
-- PlayerNotOldEnough
-- NoMoreCardsOnDeck
-- DeckIsEmpty
-
-### Interfaces
-... still to come on a more suffisticated implementation.
-
-### Code Structure
-Use [Maven Styled Structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
-- cardgame
-  - src
-    - main/java/ddb/international
-      - card
-        - Card.java
-        - PokerCard.java
-        - images
-      - deck
-        - Deck.java
-        - PokerDeck.java
-        - cards
-          - uno.csv
-          - schnapsen.csv|.json    
-      - pile
-        - 
-      - person
-      - game
-        - Game.java
-        - PokerGame.java
-        - BlackJackGame.java
-    - test
-      - CardTest.java
-      - PokerCardTest.java
-    - resources
-      - cards
-        - uno.csv
-        - schnapsen.csv|.json
-      - gamerules
-        - uno.md
-        - blackjack.md
-
 
 ## Storage (optional)
 - Hibernate (ORM)

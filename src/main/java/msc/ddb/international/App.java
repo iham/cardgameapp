@@ -3,7 +3,15 @@ package msc.ddb.international;
 import java.util.Scanner;
 
 /**
- * Hello world!
+ * This implementation is a collection of ideas to make use of several Software Design Patterns, such as:
+ * - ABSTRACTION
+ * - INTERFACE
+ * - SINGLETON
+ * - STRATEGY
+ * - COMMAND
+ * - STATE
+ * - MEMENTO
+ * - PROXY
  * 
  */
 public class App 
@@ -15,37 +23,6 @@ public class App
      */
     public static void main( String[] args )
     {
-        // create a game
-        Game game = new Game();
-        Player player01 = new Player("Harald");
-        game.setPlayer(player01);
-        game.startGame();
-        // lets play!
-        System.out.println("--------------------\nWelcome to BlackJack!\n\n");
-        int decision = 1;
-        while(decision == 1) {
-            try{
-                System.out.println("Would you like to:\n1) Pick another Card?\n2) Chicken out?");
-                decision = input.nextInt();
-                switch (decision) {
-                    case 1:
-                        game.dealCard();
-                        System.out.println(player01.getHand());
-                        break;
-                    case 2:
-                        game.stopGame();
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-            catch(Exception e){
-                System.out.println("Invalid Input");
-                input.next();
-            }
-        }
-        // how did it run
-        System.out.println(game);
+        System.out.println("Extensive Ideas to the RESCUE");
     }
 }
