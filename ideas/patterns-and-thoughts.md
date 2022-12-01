@@ -20,7 +20,7 @@
 - use **ABSTRACTIONS** for PERSONs, (PACKs), GAME, ...
 
 ## State Pattern
-- use **STATEs** for CARD faces
+- use **STATEs** for CARD faces (up/down)
 - in GAMEs we have some CONTANT **STATES** like "end", "start"
 - PLAYERs can have different **STATES** like "won", "lost", "hold", "locked"
 - (an ACE or JOKER could use **STATES** to represent there Value) -> maybe better use **DECORATION** or **PROXY**
@@ -28,10 +28,15 @@
 ## Decorator Pattern
 - CARD are very different and consist of varies of values.
   - **DECORATION** for the (optional) SUIT, RANK, VALUE, PENALTY, DATA (think Quartett cards where data categories are matched up)
+- a GAME can have a dealer, but does not need one -> use **DECORATION** to add one if needed.
 
 ## Command Pattern
 - ACTIONs in GAMES could be implemented via **COMMANDs** and executed by CARDs, PLAYERs, DEALERs or the GAME itself
-- 
+  - DEAL CARDs
+  - SHUFFLE DECK
+  - SKIP PLAYER
+  - REVERSE GAME DIRECTION
+- could be stored in ENUMS
 
 ## Memento Pattern
 - to keep track of a GAMEs HISTORY
