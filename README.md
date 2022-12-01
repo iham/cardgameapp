@@ -10,7 +10,8 @@ Playing Cards is FUN!
 - Markus Hilbert (Lead/Architecture)
 
 ## Targets
-Create a small but extendable project in Java using OOP concepts and prozedures.
+- Create an extendable project in Java using OOP concepts, prozedures and design patterns.
+- Make it easy to add new Types of CARDs, GAMEs, ...
 
 ### Prozedures
 - [x] if/else

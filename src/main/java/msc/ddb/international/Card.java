@@ -1,71 +1,47 @@
 package msc.ddb.international;
 
-public class Card {
-    private Suit suit;
-    private Rank rank;
-    private int value;
+import msc.ddb.international.interfaces.Nameable;
+import msc.ddb.international.interfaces.Rankable;
+import msc.ddb.international.interfaces.Suitable;
 
-    /**
-     * A BlackJackCard is defined by a Suit and Rank
-     * ...
-     * @param suit
-     * @param rank
-     */
-    public Card(Suit suit, Rank rank, int value) {
+public abstract class Card {
+    private Suitable suit;
+    private Rankable rank;
+    private int value;
+    
+    
+    public Card(Rankable rank) {
+        setRank(rank);
+    }
+
+    public Card(Suitable suit, Rankable rank) {
         setSuit(suit);
         setRank(rank);
-        setValue(value);
     }
-    
-    /**
-     * @param suit
-     */
-    private void setSuit(Suit suit) {
+
+    public Suitable getSuit() {
+        return suit;
+    }
+    public void setSuit(Suitable suit) {
         this.suit = suit;
     }
-    
-    /** 
-     * @param rank - this is a Rank ENUM value
-     */
-    private void setRank(Rank rank) {
+    public Rankable getRank() {
+        return rank;
+    }
+    public void setRank(Rankable rank) {
         this.rank = rank;
     }
-    
-    /** 
-     * @param value
-     */
+    public int getValue() {
+        return value;
+    }
     public void setValue(int value) {
         this.value = value;
     }
 
-    
-    /** 
-     * @return Suit
-     */
-    public Suit getSuit() {
-        return suit;
-    }
-    
-    /** 
-     * @return Rank
-     */
-    public Rank getRank() {
-        return rank;
-    }
-    
-    /** 
-     * @return int
-     */
-    public int getValue() {
-        return value;
-    }
-
-    
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
-        return rank + "(" + value + ") of " + suit;
+        return "Card [suit=" + ((Nameable)suit).getName() + ", rank=" + ((Nameable)rank).getName() + ", value=" + value + "]";
     }
+    
+    
 }
