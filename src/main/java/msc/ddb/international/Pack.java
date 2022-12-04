@@ -1,23 +1,31 @@
 package msc.ddb.international;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
-import msc.ddb.international.interfaces.Packable;
+import msc.ddb.international.abstracts.PackCreator;
 
 public class Pack {
     private ArrayList<Card> cards = new ArrayList<Card>();
 
-    public Pack(Packable packCreation) {
-        cards = packCreation.createPack();
+    public Pack(PackCreator creator) {
+        cards = creator.createPack();
     }
 
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
+        StringJoiner output = new StringJoiner(", ");
         for (Card card : cards) {
-            output.append(card);
-            output.append("\n");
+            output.add( card.toString() );
         }
-        return output.toString();
+        return "Pack [" + output.toString() + "]";
+    }
+
+    public String listCards() {
+        StringJoiner output = new StringJoiner("\n");
+        for (Card card : cards) {
+            output.add( card.toString() );
+        }
+        return "Pack:\n" + output.toString();
     }
 }
