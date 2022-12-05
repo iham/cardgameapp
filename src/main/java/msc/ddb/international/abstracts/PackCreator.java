@@ -3,7 +3,7 @@ package msc.ddb.international.abstracts;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import msc.ddb.international.Card;
+import msc.ddb.international.game.Card;
 import msc.ddb.international.interfaces.Packable;
 import msc.ddb.international.interfaces.Rankable;
 import msc.ddb.international.interfaces.Suitable;

@@ -1,4 +1,4 @@
-package msc.ddb.international;
+package msc.ddb.international.game;
 
 import java.util.ArrayList;
 import java.util.StringJoiner;
@@ -10,6 +10,10 @@ public class Pack {
 
     public Pack(PackCreator creator) {
         cards = creator.createPack();
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
     @Override

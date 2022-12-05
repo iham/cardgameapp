@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import msc.ddb.international.game.Card;
 
-public interface Packable {
-    ArrayList<Card> createPack();
+public interface Dealable {
+    public ArrayList<Card> dealCards();
 }

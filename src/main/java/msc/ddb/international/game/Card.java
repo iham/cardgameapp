@@ -1,4 +1,4 @@
-package msc.ddb.international;
+package msc.ddb.international.game;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

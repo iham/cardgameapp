@@ -30,14 +30,13 @@ public class App
      */
     public static void main( String[] args )
     {
-        // Pack pack = new Pack(new FrenchPack52WithJokers());
-        // System.out.println(pack);
-        // Suitable club = Club.getInstance();
-        // Suits frenchSuits = new FrenchSuits();
-        Ranks frenchRanks = new FrenchRanks();
         Pack frenchPack = new Pack(new FrenchFullPackCreator(new FrenchRanks().getAvailableRanks(), new FrenchSuits().getAvailableSuits()) );
+        Deck blackJackDeck = new Deck(frenchPack, 6);
+        System.out.println(blackJackDeck.listCards());
+        blackJackDeck.shuffle();
+        System.out.println(blackJackDeck.listCards());
         // System.out.println(frenchSuits);
         // System.out.println(frenchRanks);
-        System.out.println(frenchPack.listCards());
+        // System.out.println(frenchPack.listCards());
     }
 }
