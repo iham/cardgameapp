@@ -1,6 +1,7 @@
 package msc.ddb.international;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hello world!
@@ -8,44 +9,38 @@ import java.util.Scanner;
  */
 public class App 
 {
-    static Scanner input = new Scanner(System.in);
-    
     /** 
      * @param args
      */
     public static void main( String[] args )
     {
-        // create a game
-        Game game = new Game();
-        Player player01 = new Player("Harald");
-        game.setPlayer(player01);
-        game.startGame();
-        // lets play!
-        System.out.println("--------------------\nWelcome to BlackJack!\n\n");
-        int decision = 1;
-        while(decision == 1) {
-            try{
-                System.out.println("Would you like to:\n1) Pick another Card?\n2) Chicken out?");
-                decision = input.nextInt();
-                switch (decision) {
-                    case 1:
-                        game.dealCard();
-                        System.out.println(player01.getHand());
-                        break;
-                    case 2:
-                        game.stopGame();
-                        break;
-                    default:
-                        break;
-                }
+        List<String> l1 = new ArrayList<String>();
+        l1.add("l1.1");
+        l1.add("l1.2");
+        l1.add("l1.3");
+        l1.add("l1.4");
+        List<String> l2 = new ArrayList<String>();
+        l2.add("l2.1");
+        l2.add("l2.2");
+        l2.add("l2.3");
+        l2.add("l2.4");
+        List<String> l3 = new ArrayList<String>();
+        l3.addAll(l1);
+        l3.addAll(l2);
+        
+        List<String> l4 = new ArrayList<String>();
+        l4.add("l4.1");
+        l4.add("l4.2");
+        l4.add("l4.3");
+        l4.add("l4.4");
+        
+        l4.addAll(20, l4);
+        System.out.println(l4);
 
-            }
-            catch(Exception e){
-                System.out.println("Invalid Input");
-                input.next();
-            }
-        }
-        // how did it run
-        System.out.println(game);
+        // System.out.println("Abstract without overdoing it.");
+        // BlackJack game = new BlackJack("");
+        // game.addPlayer("Markus");
+        // game.startGame();
+        // System.out.println(game);
     }
 }
