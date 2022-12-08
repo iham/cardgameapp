@@ -54,10 +54,10 @@ The class "Hand" holds the cards of a "Player".
 *Implementing Hashcode for PERSON to match DEALER and PLAYER was not that trivial.*
 
 ## Step 3 - Abstract and implement Deck and Card
-Make "Deck" a separated class to create "Card"s.
+Make "Deck" a separated class to create "Card"s. Card
 
 ### Features Used
- - switch/case for values asociated with ranks
+ - switch/case for values asociated with ranks in game
  - new types
    - Deck
    - Card
