@@ -3,20 +3,22 @@ package msc.ddb.international.actors;
 import java.util.LinkedHashMap;
 import java.util.StringJoiner;
 
+import msc.ddb.international.decks.Card;
+
 public class Hand {
-    LinkedHashMap<String, Integer> cards = new LinkedHashMap<String, Integer>();
+    LinkedHashMap<Card, Integer> cards = new LinkedHashMap<Card, Integer>();
 
     public Hand() {}
 
-    public LinkedHashMap<String, Integer> getCards() {
+    public LinkedHashMap<Card, Integer> getCards() {
         return cards;
     }
 
-    public void addCard(String card, int value) {
+    public void addCard(Card card, int value) {
         cards.put(card, value);
     }
 
-    public void setCards(LinkedHashMap<String, Integer> cards) {
+    public void setCards(LinkedHashMap<Card, Integer> cards) {
         this.cards = cards;
     }
 
@@ -52,8 +54,10 @@ public class Hand {
     @Override
     public String toString() {
         StringJoiner output = new StringJoiner(", ");
-        cards.forEach((String name, Integer value) -> {
-            output.add(String.format("Card [name=%s, value=%d]", name, value));
+        cards.forEach((Card card, Integer value) -> {
+            String c = card.toString();
+            c = c.substring(0, c.length() - 1);
+            output.add(String.format("%s, %d]", c, value));
         });
         return String.format("Hand [cards=%s, sum=%d]", output.toString(), calculateHand());
     }

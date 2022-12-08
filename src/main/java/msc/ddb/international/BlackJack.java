@@ -11,6 +11,8 @@ import java.util.Scanner;
 import msc.ddb.international.actors.Dealer;
 import msc.ddb.international.actors.Hand;
 import msc.ddb.international.actors.Person;
+import msc.ddb.international.decks.Card;
+import msc.ddb.international.decks.Deck;
 import msc.ddb.international.utils.Name;
 
 public class BlackJack extends Name {
@@ -27,31 +29,9 @@ public class BlackJack extends Name {
     private LinkedHashMap<Person, String> playersWithState = new LinkedHashMap<Person, String>();
 
     // the Deck of Cards
-    private List<String> deck = new ArrayList<String>();
-    private static final List<String> suits = new ArrayList<String>(Arrays.asList(
-        "Hearts",
-        "Diamonds",
-        "Spades",
-        "Clubs"
-    ));
-    private static final String[] ranks = {
-        "Two",
-        "Three",
-        "Four",
-        "Five",
-        "Six",
-        "Seven",
-        "Eight",
-        "Nine",
-        "Ten",
-        "Jack",
-        "Queen",
-        "King",
-        "Ace"        
-    };
+    private Deck deck;
 
     // utils we use within the game
-    private Random random = new Random();
     private Scanner input = new Scanner(System.in);
 
     public BlackJack() {
@@ -123,30 +103,7 @@ public class BlackJack extends Name {
         players.forEach(player -> initializeStateOfPlayer(player));
     }
 
-    public void createDeck() {
-        // lets create a deck of 52 cards
-        ArrayList<String> tempDeck = new ArrayList<String>();
-        for (String suit : suits) {
-            for (String rank : ranks) {
-                tempDeck.add(rank + " of " + suit);
-            }                
-        }
-        // BlackJack has 6 decks, so lets add 5 copies
-        for (int i = 0; i < 6; i++) {
-            deck.addAll(tempDeck);    
-        }
-    }
-
-    public void shuffleDeck() {
-        Collections.shuffle(deck, random);
-    }
-
-    public String pickCardFromDeck() {
-        // remove the last card from deck and return it
-        return deck.remove(deck.size() - 1);
-    }
-
-    public void addCardToHand(Person player, String card) {
+    public void addCardToHand(Person player, Card card) {
         int value = getValueForCard(card);
         Hand hand = player.getHand();
         if (value == 11 && hand.calculateHand() >= 11)
@@ -154,19 +111,50 @@ public class BlackJack extends Name {
         hand.addCard(card, value);
     }
 
-    public int getValueForCard(String card) {
+    public int getValueForCard(Card card) {
         int value = 0;
-        for (int i = 0; i < ranks.length; i++) {
-            if(card.contains(ranks[i])) {
-                if (i < 9)
-                    value = i+2;
-                // Jack, Queen, King have 10
-                else if (i >= 9 && i < 12)
-                    value = 10;
-                // Ace is 11
-                else
-                    value = 11;
-            }
+        switch (card.getRank()) {
+            case "Two":
+                value = 2;
+                break;
+            case "Three":
+                value = 3;
+                break;
+            case "Four":
+                value = 4;
+                break;
+            case "Five":
+                value = 5;
+                break;
+            case "Six":
+                value = 6;
+                break;
+            case "Seven":
+                value = 7;
+                break;
+            case "Eight":
+                value = 8;
+                break;
+            case "Nine":
+                value = 9;
+                break;
+            case "Ten":
+                value = 10;
+                break;
+            case "Jack":
+                value = 10;
+                break;
+            case "Queen":
+                value = 10;
+                break;
+            case "King":
+                value = 10;
+                break;
+            case "Ace":
+                value = 11;
+                break;
+            default:
+                break;
         }
         return value;
     }
@@ -301,11 +289,11 @@ public class BlackJack extends Name {
     public void initialDeal() {
         // each player gets two card when the game starts
         players.forEach((Person player) -> {
-            String card;
+            Card card;
             Hand hand = player.getHand();
-            card = pickCardFromDeck();
+            card = deck.pickCard();
             hand.addCard(card, getValueForCard(card));
-            card = pickCardFromDeck();
+            card = deck.pickCard();
             hand.addCard(card, getValueForCard(card));
             setPlayerState(player);
         });
@@ -313,8 +301,7 @@ public class BlackJack extends Name {
 
     public void initializeGame() {
         if(dealer != null && players.size() >= minimumPlayers) {
-            createDeck();
-            shuffleDeck();
+            deck = new Deck(6);
             initialDeal();
         }
         else
@@ -333,7 +320,7 @@ public class BlackJack extends Name {
                 System.out.println(createPlayerReport(player));
                 if(isPlayerParticipating(player) == true) {
                     if(isPlayerContinuing(player) == true) {
-                        String card = pickCardFromDeck();
+                        Card card = deck.pickCard();
                         System.out.println(player.getName() + " picks card: " + card + "\n");
                         player.getHand().addCard(card, getValueForCard(card));
                         setPlayerState(player);
@@ -355,8 +342,8 @@ public class BlackJack extends Name {
         StringBuilder report = new StringBuilder();
         Hand hand = player.getHand();
         report.append(player.getName() + " is in state \"" + getPlayerState(player) + "\" and has Hand: \n");
-        hand.getCards().forEach((String card, Integer value) -> {
-            report.append(card + " (" + value + ")\n");
+        hand.getCards().forEach((Card card, Integer value) -> {
+            report.append(card + "\n");
         });
         report.append("Total: " + hand.calculateHand() + "\n\n");
         return report.toString();

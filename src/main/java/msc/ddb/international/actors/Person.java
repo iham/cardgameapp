@@ -5,7 +5,6 @@ import msc.ddb.international.utils.Name;
 public abstract class Person extends Name {
     private Hand hand = new Hand();
 
-
     public Person(String name) {
         super(name);
         setHand(hand);
