@@ -39,6 +39,7 @@ public abstract class Person extends Name {
             return true;
         if (obj == null)
             return false;
+        // DEALER and PLAYER are different Classes - we only care about the name
         // if (getClass() != obj.getClass())
         //     return false;
         Person other = (Person) obj;
