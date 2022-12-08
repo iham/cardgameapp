@@ -19,6 +19,6 @@ public class App
         game.addPlayer("Player 1");
         game.addPlayer("Player 2");
         game.initializeGame();
-        // game.startGame();
+        game.startGame();
     }
 }

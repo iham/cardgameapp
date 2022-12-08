@@ -10,27 +10,26 @@ import java.util.Scanner;
 
 public class BlackJack {
 
-    public String name = "BlackJack (17+4)";
+    private String name = "BlackJack (17+4)";
 
     // Actors in the Game
-    public String dealer;
-    public int minimumPlayers = 2;
-    public int maximumPlayers = 10;
+    private String dealer;
+    private int minimumPlayers = 2;
+    private int maximumPlayers = 10;
     // hands
-    public LinkedHashMap<String, LinkedHashMap<String, Integer>> players = new LinkedHashMap<String, LinkedHashMap<String, Integer>>();
+    private LinkedHashMap<String, LinkedHashMap<String, Integer>> players = new LinkedHashMap<String, LinkedHashMap<String, Integer>>();
     // states
-    public LinkedHashMap<String, String> playersWithState = new LinkedHashMap<String, String>();
+    private LinkedHashMap<String, String> playersWithState = new LinkedHashMap<String, String>();
 
     // the Deck of Cards
-    public List<String> deck = new ArrayList<String>();
-    public static final List<String> suits = new ArrayList<String>(Arrays.asList(
+    private List<String> deck = new ArrayList<String>();
+    private static final List<String> suits = new ArrayList<String>(Arrays.asList(
         "Hearts",
         "Diamonds",
         "Spades",
         "Clubs"
     ));
-    public static final String[] ranks = {
-    // public static final List<String> ranks = new ArrayList<String>(Arrays.asList(
+    private static final String[] ranks = {
         "Two",
         "Three",
         "Four",
@@ -44,12 +43,11 @@ public class BlackJack {
         "Queen",
         "King",
         "Ace"        
-    // ));
     };
 
     // utils we use within the game
-    public Random random = new Random();
-    public Scanner input = new Scanner(System.in);
+    private Random random = new Random();
+    private Scanner input = new Scanner(System.in);
 
     public BlackJack(String dealer) {
         setDealer(dealer);
@@ -156,11 +154,10 @@ public class BlackJack {
         for (int i = 0; i < 6; i++) {
             deck.addAll(tempDeck);    
         }
-        int count = deck.size();
     }
 
     public void shuffleDeck() {
-        Collections.shuffle(deck, new Random());
+        Collections.shuffle(deck, random);
     }
 
     public String pickCardFromDeck() {
