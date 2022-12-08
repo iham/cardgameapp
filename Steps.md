@@ -5,6 +5,8 @@ Main goal is to try and implement an extensible card game using **Java** and it'
 ## Step 1 - A most basic Implementation
 The BlackJack Class holds all fields and methods
 There is no **Abstraction**, no **Interfaces**.
+
+### Features Used
 Just the plain logic to play a game of BlackJack including some features used in Java like:
  - class
  - constructor
@@ -29,7 +31,27 @@ Just the plain logic to play a game of BlackJack including some features used in
 
 
 ## Step 2 - Abstract and implement Persons
-Create a Person class and make Dealer and Player inherit from that.
+Create a *abstract* "Person" class and make "Dealer" and "Player" inherit from that. As those are not very specific the default implementation from "Person" will be used.
+
+As "Name" is a field, that will be used often (Dealer, Player, Game, ... later on in Suit and Card too), we make it an abstract too, that implements the interface "Nameable", to achieve a contract for anything that has a Name.
+
+The class "Hand" holds the cards a "Player".
+
+### Features Used
+ - abstract
+ - encapsulation
+ - interface
+ - additional modifiers (final)
+ - new types
+   - Person
+   - Player
+   - Dealer
+   - Hand
+
+### Class Diagram
+![Step 1](uml-models/step2.png)
+
+*Comments will follow*
 
 ## Step 3 - Abstract and implement Deck
 Make Deck a separated class to create Cards.
