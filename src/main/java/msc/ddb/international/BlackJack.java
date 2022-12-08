@@ -8,18 +8,23 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BlackJack {
+import msc.ddb.international.actors.Dealer;
+import msc.ddb.international.actors.Hand;
+import msc.ddb.international.actors.Person;
+import msc.ddb.international.utils.Name;
 
-    private String name = "BlackJack (17+4)";
+public class BlackJack extends Name {
 
     // Actors in the Game
-    private String dealer;
+    private final Person dealer = new Dealer("Dealer");
     private int minimumPlayers = 2;
     private int maximumPlayers = 10;
+
     // hands
-    private LinkedHashMap<String, LinkedHashMap<String, Integer>> players = new LinkedHashMap<String, LinkedHashMap<String, Integer>>();
+    private ArrayList<Person> players = new ArrayList<Person>();
+
     // states
-    private LinkedHashMap<String, String> playersWithState = new LinkedHashMap<String, String>();
+    private LinkedHashMap<Person, String> playersWithState = new LinkedHashMap<Person, String>();
 
     // the Deck of Cards
     private List<String> deck = new ArrayList<String>();
@@ -49,19 +54,11 @@ public class BlackJack {
     private Random random = new Random();
     private Scanner input = new Scanner(System.in);
 
-    public BlackJack(String dealer) {
-        setDealer(dealer);
-        addDealer(this.dealer);
+    public BlackJack() {
+        super("BlackJack (17+4)");
+        addDealer(dealer);
     }
     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getMinimumPlayers() {
         return minimumPlayers;
     }
@@ -80,7 +77,7 @@ public class BlackJack {
 
     public void setMaximumPlayers(int maximumPlayers) {
         if(maximumPlayers > minimumPlayers) {
-            if (maximumPlayers < 15) {
+            if (maximumPlayers < this.maximumPlayers) {
                 this.maximumPlayers = maximumPlayers;
             }
             else {
@@ -94,23 +91,13 @@ public class BlackJack {
         }
     }
 
-    public String getDealer() {
+    public Person getDealer() {
         return dealer;
     }
     
-    public void setDealer(String dealer) {
-        if(dealer.equals(""))
-            dealer = "Dealer";
-        this.dealer = dealer;
-    }
-
-    public void addDealer(String dealer) {
-        // if dealer isn't set, do that upfront 
-        if(this.dealer.isEmpty() == true) {
-            setDealer(dealer);
-        }
-        // a dealer is a Player too
-        if(!players.containsKey(dealer)) {
+    public void addDealer(Person dealer) {
+        // if dealer isn't set, do that upfront
+        if(!players.contains(dealer)) {
             addPlayer(dealer);
         }
         else {
@@ -120,26 +107,20 @@ public class BlackJack {
     }
 
     // Set Players - no getters and setters needed here.
-    public void addPlayer(String player) {
+    public void addPlayer(Person player) {
         if(players.size() < maximumPlayers) {
-            if(player.equals(""))
-                player = "Player " + (players.size() + 1);
-            // a newly added Player comes empty handed
-            LinkedHashMap<String, Integer> hand = new LinkedHashMap<String, Integer>();
-            this.players.put(player, hand);
+            players.add(player);
             initializeStateOfPlayer(player);
         }
     }
 
-    public void initializeStateOfPlayer(String player) {
+    public void initializeStateOfPlayer(Person player) {
         playersWithState.put(player, "HIT");
     }
 
     public void initializeStateOfPlayers() {
         // init players with state "PLAY"
-        players.forEach((String player, LinkedHashMap<String, Integer> hand) -> {
-            initializeStateOfPlayer(player);
-        });
+        players.forEach(player -> initializeStateOfPlayer(player));
     }
 
     public void createDeck() {
@@ -165,11 +146,12 @@ public class BlackJack {
         return deck.remove(deck.size() - 1);
     }
 
-    public void addCardToHand(LinkedHashMap<String, Integer> hand, String card) {
+    public void addCardToHand(Person player, String card) {
         int value = getValueForCard(card);
-        if (value == 11 && calculateHand(hand) >= 11)
+        Hand hand = player.getHand();
+        if (value == 11 && hand.calculateHand() >= 11)
             value = 1;
-        hand.put(card, value);
+        hand.addCard(card, value);
     }
 
     public int getValueForCard(String card) {
@@ -189,33 +171,29 @@ public class BlackJack {
         return value;
     }
 
-    public int calculateHand(LinkedHashMap<String, Integer> hand) {
-        return hand.values().stream().reduce(0, (a, b) -> a + b);
-    }
-
     public boolean gameHasParticipants() {
         // is there any player still playing?
         return playersWithState.containsValue("HIT");
     }
 
-    public boolean isPlayerParticipating(String player) {
+    public boolean isPlayerParticipating(Person player) {
         // is player still playing?
         return playersWithState.get(player).contains("HIT");
     }
 
-    public String getPlayerState(String player) {
+    public String getPlayerState(Person player) {
         return playersWithState.get(player);
     }
 
-    public void setPlayerState(String player) {
+    public void setPlayerState(Person player) {
         // iterate all players based on the last change
-        int value = calculateHand(players.get(player));
-        boolean isDealer = player == dealer;
+        int value = player.getHand().calculateHand();
+        boolean isDealer = player.equals(dealer);
         if (value > 21) {
             playersWithState.put(player, "LOST");
             if(isDealer == true) {
-                players.forEach((String opponent, LinkedHashMap<String, Integer> hand) -> {
-                    if(opponent != player && playersWithState.get(opponent) != "LOST") {
+                players.forEach(opponent -> {
+                    if(!opponent.equals(player) && playersWithState.get(opponent) != "LOST") {
                         playersWithState.put(opponent, "WON");
                     }
                 });
@@ -238,10 +216,10 @@ public class BlackJack {
     }
 
     public void setFinalStates() {
-        int dealerValue = calculateHand(players.get(dealer));
-        players.forEach((String player, LinkedHashMap<String, Integer> hand) -> {
-            if(player != dealer && playersWithState.get(player).equals("HOLD")) {
-                int playerValue = calculateHand(hand);
+        int dealerValue = dealer.getHand().calculateHand();
+        players.forEach(player -> {
+            if(!player.equals(dealer) && playersWithState.get(player).equals("HOLD")) {
+                int playerValue = player.getHand().calculateHand();
                 if(playerValue >= dealerValue) {
                     playersWithState.put(player, "WON");
                 }
@@ -255,7 +233,7 @@ public class BlackJack {
             // count players which are not the dealer and have LOST
             long count;
             count = playersWithState.entrySet().stream()
-                            .filter(x -> x.getKey() != dealer)
+                            .filter(x -> !x.getKey().equals(dealer))
                             .filter(x -> x.getValue() == "LOST")
                             .count();
             // only dealer is not a looser, so its a WON round
@@ -263,7 +241,7 @@ public class BlackJack {
                 playersWithState.put(dealer, "WON");
             }
             count = playersWithState.entrySet().stream()
-                            .filter(x -> x.getKey() != dealer)
+                            .filter(x -> !x.getKey().equals(dealer))
                             .filter(x -> x.getValue() == "WON")
                             .count();
             // all players are winners? -> the dealer must be the looser
@@ -272,8 +250,8 @@ public class BlackJack {
             }
             // lets check if all players who hasn't LOST is below dealer
             count = playersWithState.entrySet().stream()
-                            .filter(player -> player.getKey() != dealer)
-                            .filter(player -> calculateHand(players.get(player.getKey())) < calculateHand(players.get(dealer)))
+                            .filter(x -> !x.getKey().equals(dealer))
+                            .filter(player -> player.getKey().getHand().calculateHand() < dealer.getHand().calculateHand())
                             .count();
             if ((players.size() - count) == 1) {
                 playersWithState.put(dealer, "WON");
@@ -281,12 +259,12 @@ public class BlackJack {
         }
     }
 
-    public boolean isPlayerContinuing(String player) {
+    public boolean isPlayerContinuing(Person player) {
         boolean decision = false;
-        if (player != dealer) {
+        if (!player.equals(dealer)) {
             decision = interactWithPlayer(player);
         }
-        else if(calculateHand(players.get(player)) < 17) {
+        else if(player.getHand().calculateHand() < 17) {
             decision = true;
         }
         System.out.println(player + " decided to " + ((decision == true) ? "continue" : "stall"));
@@ -294,12 +272,12 @@ public class BlackJack {
         return decision;
     }
 
-    public boolean interactWithPlayer(String player) {
+    public boolean interactWithPlayer(Person player) {
         boolean getAnotherCard = false;
         int decision = 0;
         while(decision == 0) {
             try{
-                System.out.println(player + ", would you like to:\n1) HIT\n2) HOLD");
+                System.out.println(player.getName() + ", would you like to:\n1) HIT\n2) HOLD");
                 decision = input.nextInt();
                 switch (decision) {
                     case 1:
@@ -322,15 +300,19 @@ public class BlackJack {
 
     public void initialDeal() {
         // each player gets two card when the game starts
-        players.forEach((String player, LinkedHashMap<String, Integer> hand) -> {
-            addCardToHand(hand, pickCardFromDeck());
-            addCardToHand(hand, pickCardFromDeck());
+        players.forEach((Person player) -> {
+            String card;
+            Hand hand = player.getHand();
+            card = pickCardFromDeck();
+            hand.addCard(card, getValueForCard(card));
+            card = pickCardFromDeck();
+            hand.addCard(card, getValueForCard(card));
             setPlayerState(player);
         });
     }
 
     public void initializeGame() {
-        if(dealer.isEmpty() == false && players.size() >= minimumPlayers) {
+        if(dealer != null && players.size() >= minimumPlayers) {
             createDeck();
             shuffleDeck();
             initialDeal();
@@ -346,14 +328,14 @@ public class BlackJack {
         int round = 1;
         while(gameHasParticipants() == true) {
             System.out.println("Round " + round + " started\n");
-            players.forEach((String player, LinkedHashMap<String, Integer> hand) -> {
-                System.out.println(player + "'s turn.\n");
-                System.out.println(createPlayerReport(player, hand));
+            players.forEach(player -> {
+                System.out.println(player.getName() + "'s turn.\n");
+                System.out.println(createPlayerReport(player));
                 if(isPlayerParticipating(player) == true) {
                     if(isPlayerContinuing(player) == true) {
                         String card = pickCardFromDeck();
-                        System.out.println(player + " picks card: " + card + "\n");
-                        addCardToHand(hand, card);
+                        System.out.println(player.getName() + " picks card: " + card + "\n");
+                        player.getHand().addCard(card, getValueForCard(card));
                         setPlayerState(player);
                     }
                 }   
@@ -364,31 +346,32 @@ public class BlackJack {
     }
 
     public void endGame() {
-        // setFinalStates();
-        System.out.println(name + " is finished.");
+        setFinalStates();
+        System.out.println(getName() + " is finished.");
         System.out.println(createGameReport());;
     }
 
-    public String createPlayerReport(String player, LinkedHashMap<String, Integer> hand) {
+    public String createPlayerReport(Person player) {
         StringBuilder report = new StringBuilder();
-        report.append(player + " is in state \"" + getPlayerState(player) + "\" and has Hand: \n");
-        hand.forEach((String card, Integer value) -> {
+        Hand hand = player.getHand();
+        report.append(player.getName() + " is in state \"" + getPlayerState(player) + "\" and has Hand: \n");
+        hand.getCards().forEach((String card, Integer value) -> {
             report.append(card + " (" + value + ")\n");
         });
-        report.append("Total: " + calculateHand(hand) + "\n\n");
+        report.append("Total: " + hand.calculateHand() + "\n\n");
         return report.toString();
     }
 
     public String createGameReport() {
         StringBuilder report = new StringBuilder();
-        players.forEach((String player, LinkedHashMap<String, Integer> hand) -> {
-            report.append(createPlayerReport(player, hand) + "\n");
+        players.forEach(player -> {
+            report.append(createPlayerReport(player) + "\n");
         });
         return report.toString();
     }
 
     public String toString() {
-        return name+ "\n" + createGameReport();
+        return getName() + "\n" + createGameReport();
     }
 
 }

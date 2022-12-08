@@ -1,23 +1,15 @@
 package msc.ddb.international;
 
-import java.util.Scanner;
 
-/**
- * Hello world!
- * 
- */
+import msc.ddb.international.actors.Player;
+
 public class App 
 {
-    public static Scanner input = new Scanner(System.in);
-
-    /** 
-     * @param args
-     */
     public static void main( String[] args )
     {
-        BlackJack game = new BlackJack("");
-        game.addPlayer("Player 1");
-        game.addPlayer("Player 2");
+        BlackJack game = new BlackJack();
+        game.addPlayer(new Player("Player 1"));
+        game.addPlayer(new Player("Player 2"));
         game.initializeGame();
         game.startGame();
     }
