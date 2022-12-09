@@ -6,6 +6,7 @@ import msc.ddb.international.actors.Dealer;
 import msc.ddb.international.actors.Hand;
 import msc.ddb.international.actors.Person;
 import msc.ddb.international.actors.Player;
+import msc.ddb.international.decks.Card;
 
 /**
  * Hello world!
@@ -21,14 +22,15 @@ public class App
     public static void main( String[] args )
     {
         // Hand hand = new Hand();
-        // hand.addCard("Jack", 10);
-        // hand.addCard("5", 5);
+        // hand.addCard(new Card("Jack"), 10);
+        // hand.addCard(new Card("5"), 10);
 
         // Person player = new Player("Markus", hand);
         
         // Person dealer = new Dealer("Markus", hand);
         // System.out.println(((Person)dealer).equals((Person)player));
         // System.out.println(player.equals(dealer));
+        // boolean isDealer = (dealer instanceof Dealer);
         BlackJack game = new BlackJack();
         game.addPlayer(new Player("Player 1"));
         game.addPlayer(new Player("Player 2"));

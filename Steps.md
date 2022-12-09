@@ -65,8 +65,17 @@ Make "Deck" a separated class to create "Card"s. Card
 ### Class Diagram
 ![Step 3](uml-models/step3.png)
 
-**
+## Step 4 - Abstract Game
+"Game" is an abstract implementation and BlackJack has only it's specifics implemented.
 
-## Step 5 - 
+### Class Diagram
+![Step 4](uml-models/step4.png)
 
-## Step 6 - 
+
+## Step 5-n - Ideas to come
+- Use **State Pattern** for Players and Dealer
+  - *in case of BlackJack a Dealer holds a seperate State for each player*
+- Make Dealing a **Command Pattern** based Class for each Game
+- Move Deck Creation to a **Factory Pattern**
+- Make GameRules a **Command Pattern** and apply a set of them to each Game
+- Abstract Rounds into a **Decorator Pattern** to allow multiple Games per Session (*think of Uno, Schnapsen*)
