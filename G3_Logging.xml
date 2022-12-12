@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-12-12T14:40:10.267097400Z</date>
+  <millis>1670856010267</millis>
+  <nanos>97400</nanos>
+  <sequence>0</sequence>
+  <logger>msc.ddb.international.App</logger>
+  <level>INFO</level>
+  <class>msc.ddb.international.App</class>
+  <method>startLogging</method>
+  <thread>1</thread>
+  <message>Start Logging with Java Util Logging (G3_Logging.xml)</message>
+</record>
+<record>
+  <date>2022-12-12T14:40:10.463006500Z</date>
+  <millis>1670856010463</millis>
+  <nanos>6500</nanos>
+  <sequence>1</sequence>
+  <logger>msc.ddb.international.App</logger>
+  <level>INFO</level>
+  <class>msc.ddb.international.App</class>
+  <method>getEnvironment</method>
+  <thread>1</thread>
+  <message>Write Environments: Admin</message>
+</record>
+<record>
+  <date>2022-12-12T14:40:16.806852700Z</date>
+  <millis>1670856016806</millis>
+  <nanos>852700</nanos>
+  <sequence>2</sequence>
+  <logger>msc.ddb.international.App</logger>
+  <level>INFO</level>
+  <class>msc.ddb.international.App</class>
+  <method>consoleChooseLanguage</method>
+  <thread>1</thread>
+  <message>selected language: German</message>
+</record>
+<record>
+  <date>2022-12-12T14:40:20.695754300Z</date>
+  <millis>1670856020695</millis>
+  <nanos>754300</nanos>
+  <sequence>3</sequence>
+  <logger>msc.ddb.international.App</logger>
+  <level>INFO</level>
+  <class>msc.ddb.international.App</class>
+  <method>finishApp</method>
+  <thread>1</thread>
+  <message>Runtime 10456 ms</message>
+</record>
+</log>
