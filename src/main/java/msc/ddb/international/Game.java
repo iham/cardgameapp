@@ -8,6 +8,11 @@ import msc.ddb.international.decks.Card;
 import msc.ddb.international.decks.Deck;
 import msc.ddb.international.utils.Name;
 
+/* 
+ * <p><b> Game Class</b></p>
+ * <p><i> Specialization of Name Class </i></p> 
+ */
+
 public abstract class Game extends Name {
 
     private int minimumPlayers = 2;
@@ -25,10 +30,18 @@ public abstract class Game extends Name {
         setDealer(new Dealer("Dealer"));
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getMinimumPlayers() {
         return minimumPlayers;
     }
 
+    
+    /** 
+     * @param minimumPlayers
+     */
     public void setMinimumPlayers(int minimumPlayers) {
         if(minimumPlayers < 2)
             this.minimumPlayers = minimumPlayers;
@@ -37,38 +50,62 @@ public abstract class Game extends Name {
             System.out.println("A Game needs at least 2 Players: a Dealer AND an Opponent!");
     }
 
+    
+    /** 
+     * @return int (#maximum Players)
+     */
     public int getMaximumPlayers() {
         return maximumPlayers;
     }
 
+    
+    /** 
+     * @param maximumPlayers ()
+     */
     public void setMaximumPlayers(int maximumPlayers) {
-        if(maximumPlayers > minimumPlayers) {
-            if (maximumPlayers < this.maximumPlayers) {
-                this.maximumPlayers = maximumPlayers;
+        try {
+           if(maximumPlayers > minimumPlayers) {
+                if (maximumPlayers < this.maximumPlayers) {
+                    this.maximumPlayers = maximumPlayers;
+                }
+                else {
+                    // TODO: Exception here
+                    System.out.println("a maximum of 15 should do it.");
+                }
             }
-            else {
-                // TODO: Exception here
-                System.out.println("a maximum of 15 should do it.");
-            }
-        }
-        else {
-            // TODO: Exception here
+        } catch (Exception e) {
             System.out.println("you can't set a maximum lower than the minimum amout of players.");
         }
     }
 
+    
+    /** 
+     * @return Person
+     */
     public Person getDealer() {
         return dealer;
     }
     
+    
+    /** 
+     * @param dealer
+     */
     private void setDealer(Dealer dealer) {
         this.dealer = dealer;
     }
     
+    
+    /** 
+     * @return ArrayList<Person>
+     */
     public ArrayList<Person> getPlayers() {
         return players;
     }
 
+    
+    /** 
+     * @param player
+     */
     // Set Players - no getters and setters needed here.
     public void addPlayer(Person player) {
         if(players.size() < maximumPlayers) {
@@ -76,6 +113,11 @@ public abstract class Game extends Name {
         }
     }
 
+    
+    /** 
+     * @param player
+     * @param card
+     */
     public void addCardToHand(Person player, Card card) {
         int value = getValueForCard(card);
         Hand hand = player.getHand();
@@ -84,10 +126,18 @@ public abstract class Game extends Name {
         hand.addCard(card, value);
     }
 
+    
+    /** 
+     * @return Deck
+     */
     public Deck getDeck() {
         return deck;
     }
 
+    
+    /** 
+     * @param deck
+     */
     public void setDeck(Deck deck) {
         this.deck = deck;
     }
@@ -98,6 +148,11 @@ public abstract class Game extends Name {
 
     public abstract boolean isPlayerParticipating(Person player);
 
+    
+    /** 
+     * @param player
+     * @return boolean (Is the player continuing the game 0|1)
+     */
     public boolean isPlayerContinuing(Person player) {
         return interactWithPlayer(player);
     }
@@ -112,6 +167,11 @@ public abstract class Game extends Name {
 
     public abstract void endGame();
 
+    
+    /** 
+     * @param player (Person of player)
+     * @return String (return the complete Hand of the player)
+     */
     public String createPlayerReport(Person player) {
         StringBuilder report = new StringBuilder();
         Hand hand = player.getHand();
@@ -123,6 +183,10 @@ public abstract class Game extends Name {
         return report.toString();
     }
 
+    
+    /** 
+     * @return String (Stringbuilde = a mutable sequence of characters will be returned containing the status of the hand)
+     */
     public String createGameReport() {
         StringBuilder report = new StringBuilder();
         players.forEach(player -> {
@@ -131,6 +195,10 @@ public abstract class Game extends Name {
         return report.toString();
     }
 
+    
+    /** 
+     * @return String
+     */
     public String toString() {
         return getName() + "\n" + createGameReport();
     }
