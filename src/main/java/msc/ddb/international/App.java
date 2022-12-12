@@ -10,7 +10,7 @@ import msc.ddb.international.decks.Card;
 
 /**
  * Hello world!
- * @author Markus Hilbert
+ * @author Markus Hilbert 20221212
  * 
  */
 public class App 
