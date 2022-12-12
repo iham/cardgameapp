@@ -17,14 +17,16 @@ import java.util.UUID;
 import java.net.InetAddress;
 import static java.util.Locale.*;
 
-import msc.ddb.international.actors.Dealer;
-import msc.ddb.international.actors.Hand;
-import msc.ddb.international.actors.Person;
+// import msc.ddb.international.actors.Dealer;
+// import msc.ddb.international.actors.Hand;
+// import msc.ddb.international.actors.Person;
 import msc.ddb.international.actors.Player;
-import msc.ddb.international.decks.Card;
+// import msc.ddb.international.decks.Card;
 
 
 /**
+ * <p><b> CardGameApp </b></p>
+ * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup</i></p>
  * 
  * @author Markus Hilbert
  * 
@@ -46,7 +48,7 @@ public class App
     public static final String standardLanguageEN = GERMANY.getDisplayLanguage(ENGLISH);
 
     /** 
-     * @param args
+     * @param args (no arguments required)
      */
     public static void main( String[] args )
     {
@@ -73,7 +75,7 @@ public class App
         game.startGame();
 
         finishApp();
-        
+    
     }
 
     public static void startLogging()
@@ -88,7 +90,7 @@ public class App
             e.printStackTrace();
             log.severe("Error! - Error deleting file (" + FILENAME_LOGGING + ")");
         }
-        
+
         try {
             handlerLog = new FileHandler( FILENAME_LOGGING );
             log.addHandler(handlerLog);
@@ -99,6 +101,10 @@ public class App
         
     }
 
+    
+    /** 
+     * @param contentParam (String content Parameter for Environment)
+     */
     public static void writeEnvironmentFile(String contentParam) {
         
         try {
@@ -111,6 +117,10 @@ public class App
         }
     }
 
+    
+    /** 
+     * @param contentParam (String content for Gamefile)
+     */
     public static void writeGameFile(String contentParam) {
         
         try {
@@ -236,6 +246,6 @@ public class App
         System.out.println("\n");
         log.info( () -> String.format( "Runtime %s ms", start.until( now(), MILLIS))) ;
         handlerLog.close();        
-    }
 
+    }
 }
