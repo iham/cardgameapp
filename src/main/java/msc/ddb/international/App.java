@@ -32,8 +32,11 @@ public class App
         // System.out.println(player.equals(dealer));
         // boolean isDealer = (dealer instanceof Dealer);
         BlackJack game = new BlackJack();
-        game.addPlayer(new Player("Player 1"));
-        game.addPlayer(new Player("Player 2"));
+        game.addPlayer(new Player("Harald"));
+        game.addPlayer(new Player("Eric"));
+        game.addPlayer(new Player("Felix"));
+        game.addPlayer(new Player("Hannes"));
+        game.addPlayer(new Player("Markus"));
         game.initializeGame();
         game.startGame();
     }
