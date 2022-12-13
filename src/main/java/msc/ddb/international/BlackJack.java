@@ -11,6 +11,11 @@ import msc.ddb.international.decks.Deck;
 import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
+/* 
+ * <p><b> Game Class</b></p>
+ * <p><i> Specialization of Class Game </i></p> 
+ */
+
 public class BlackJack extends Game {
     // states
     private LinkedHashMap<Person, String> playersWithState;

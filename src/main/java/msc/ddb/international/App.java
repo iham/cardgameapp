@@ -16,6 +16,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.UUID;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import static java.util.Locale.*;
 
 import msc.ddb.international.actors.Player;
@@ -106,7 +108,7 @@ public class App
         try {
             handlerLog = new FileHandler( FILENAME_LOGGING );
             log.addHandler(handlerLog);
-        } catch (IOException | SecurityException e) {
+        } catch (IOException| SecurityException e) {
             log.log(Level.WARNING, "Error while creating the logfile (" + FILENAME_LOGGING + ")", e);
         }
         log.info ("Start Logging with Java Util Logging (" + FILENAME_LOGGING + ")");
@@ -122,7 +124,7 @@ public class App
         try {
             Files.writeString( Path.of( FILENAME_ENVIRONMENT ), contentParam, StandardOpenOption.APPEND);
         } 
-        catch (Exception e) {
+        catch (IOException e) {
             System.err.println("'%s' File (" + FILENAME_ENVIRONMENT + ") cannot be saved '%n'");
             e.printStackTrace();     
             log.severe("Error! - Error writing File (" + FILENAME_ENVIRONMENT + ")");
@@ -138,7 +140,7 @@ public class App
         try {
             Files.writeString( Path.of( FILENAME_GAME ), contentParam, StandardOpenOption.APPEND);
         } 
-        catch (Exception e) {
+        catch (IOException e) {
             System.err.println("'%s' File (" + FILENAME_GAME + ") cannot be saved '%n'");
             e.printStackTrace();     
             log.severe("Error! - Error writing File (" + FILENAME_GAME + ")");
@@ -168,7 +170,7 @@ public class App
         try {
             Files.writeString( Path.of( FILENAME_ENVIRONMENT ), content, StandardOpenOption.CREATE_NEW);
         } 
-        catch (Exception e) {
+        catch (IOException e) {
             System.err.println("'%s' File cannot be saved '%n'");
             e.printStackTrace();     
             log.severe("Error! - Error deleting file - Logging with 'JUL' (Java Util Logging)");
@@ -188,7 +190,7 @@ public class App
             writeEnvironmentFile(content);
             content = "IPAddress " + IP_Address + "\n";
             writeEnvironmentFile(content);
-        } catch (Exception e) {
+        } catch (UnknownHostException e) {
             System.out.println("Error: UnknownHostException!");
             log.severe("Error! - Error writing file (" + FILENAME_ENVIRONMENT + ")");
         }
@@ -242,6 +244,7 @@ public class App
         if ( actLang.equals( "X" )) {
             actLang = standardLanguageEN;
             System.out.println("Program Exit");
+            log.info ("Program Exit: " + actLang);
             finishApp();
         }
         log.info ("selected language: " + actLang);
