@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import static java.time.Instant.now;
 import static java.time.temporal.ChronoUnit.MILLIS;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +29,7 @@ import msc.ddb.international.exceptions.TooManyPlayersException;
 
 /**
  * <p><b> CardGameApp </b></p>
- * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup (</i></p>
+ * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup (Felix, Eric, Hannes)</i></p>
  * 
  * @author Markus Hilbert
  * 
@@ -94,7 +95,7 @@ public class App
 
         // If Loggingfile exists, it will be deleted
         Path path = Paths.get( FILENAME_LOGGING );
-
+  
         try {
             Files.deleteIfExists( path );
         } catch (IOException e) {
@@ -105,7 +106,7 @@ public class App
         try {
             handlerLog = new FileHandler( FILENAME_LOGGING );
             log.addHandler(handlerLog);
-        } catch (Exception e) {
+        } catch (IOException | SecurityException e) {
             log.log(Level.WARNING, "Error while creating the logfile (" + FILENAME_LOGGING + ")", e);
         }
         log.info ("Start Logging with Java Util Logging (" + FILENAME_LOGGING + ")");

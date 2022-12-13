@@ -24,3 +24,9 @@ hs_err_pid*
 
 # MacOS specific
 .DS_Store
+
+# Environment
+GI_Environment.txt
+
+# Logging file
+GI_Logging.xml
