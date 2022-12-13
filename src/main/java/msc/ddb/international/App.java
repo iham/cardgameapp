@@ -17,22 +17,18 @@ import java.util.UUID;
 import java.net.InetAddress;
 import static java.util.Locale.*;
 
-// import msc.ddb.international.actors.Dealer;
-// import msc.ddb.international.actors.Hand;
-// import msc.ddb.international.actors.Person;
 import msc.ddb.international.actors.Player;
 import msc.ddb.international.exceptions.MaximumPlayersBelowAllowedMinimumException;
 import msc.ddb.international.exceptions.MaximumPlayersBeyondAllowedMaximumException;
 import msc.ddb.international.exceptions.MinimumPlayersBelowAllowedMinimumException;
 import msc.ddb.international.exceptions.MinimumPlayersBeyondAllowedMaximumException;
 import msc.ddb.international.exceptions.NotEnoughPlayersException;
-// import msc.ddb.international.decks.Card;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
 
 /**
  * <p><b> CardGameApp </b></p>
- * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup</i></p>
+ * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup (</i></p>
  * 
  * @author Markus Hilbert
  * 
@@ -42,9 +38,9 @@ public class App
     public static Scanner input = new Scanner(System.in); // Instantiation Input
 
     private static String actLang = "English"; // Variable = Camelcase
-    private static final String FILENAME_ENVIRONMENT = "G3_Environment.txt"; // Filename = Konstante
-    private static final String FILENAME_LOGGING = "G3_Logging.xml";
-    private static final String FILENAME_GAME = "G3_Game.txt";
+    private static final String FILENAME_ENVIRONMENT = "GI_Environment.txt"; // Filename = Konstante
+    private static final String FILENAME_LOGGING = "GI_Logging.xml";
+    private static final String FILENAME_GAME = "GI_Game.txt";
 
     private static final Logger log = Logger.getLogger(App.class.getName());
     public static FileHandler handlerLog; 

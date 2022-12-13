@@ -1,0 +1,44 @@
+{
+    "$schema": ".card-schema-v1.json",
+    "cardGame": "UNO",
+    "nameGame": "UnoSpiel",
+    "cards": [ 
+       {
+        "id": 1,
+        "name": "ziffer1",
+        "color": "green",
+        "symbol": "number"
+       },
+       {
+        "id": 2,
+        "name": "ziffer2",
+        "color": "green",
+        "symbol": "number"
+       },
+       {
+        "id": 3,
+        "name": "ziffer3",
+        "color": "green",
+        "symbol": "number"
+       },
+       {
+       "id": 4,
+       "name": "ziffer4",
+       "color": "yellow",
+       "symbol": "number"
+       },
+       {
+        "id": 50,
+        "name": "Draw4", 
+        "color": "",
+        "symbol": "action"
+       },
+       {
+        "id": 50,
+        "name": "Wild",
+        "color": "",
+        "symbol": "action"
+       }
+    ],
+    "self": "https://www.cardgameapp.at"
+}
