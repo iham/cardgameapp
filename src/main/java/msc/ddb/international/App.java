@@ -9,12 +9,15 @@ import java.time.LocalDateTime;
 import static java.time.Instant.now;
 import static java.time.temporal.ChronoUnit.MILLIS;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.UUID;
+
+/* 
+ * @see <a href = "spec.html#section">Java Spec</a>
+ */
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -29,7 +32,7 @@ import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
 
-/**
+/*
  * <p><b> CardGameApp </b></p>
  * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup (Felix, Eric, Hannes)</i></p>
  * 
@@ -134,6 +137,7 @@ public class App
     
     /** 
      * @param contentParam (String content for Gamefile)
+     * @deprecated (not implemented yet)
      */
     public static void writeGameFile(String contentParam) {
         
@@ -152,6 +156,9 @@ public class App
         System.out.println("Get environment\n");
 
         // Date + Time from local TimeZone
+        /* 
+         * {@value #localDateTime}
+         */
         LocalDateTime localDateTime = LocalDateTime.now();
 
         // UUID (Universal Unique Identifier)
@@ -221,9 +228,13 @@ public class App
         System.out.println("Standard Language      = " + standardLanguage);
         System.out.println("Standard Language (EN) = " + standardLanguageEN);
 
-        String[] validLang = {"German","English","X"};
-        String actLang = standardLanguageEN; // Defaultvalue
-        boolean selectedLang = false;
+        /* 
+         * @see #actLang (selected Language)
+         */
+
+         String[] validLang = {"German","English","X"};
+         String actLang = standardLanguageEN; // Defaultvalue
+         boolean selectedLang = false;
 
         while (!selectedLang) {
             System.out.println("\n--------------------------------------------");
@@ -233,10 +244,16 @@ public class App
             String inputLang = input.nextLine();
 
             for ( String s : validLang )
+                /* 
+                 * Uses {@code equals()} and not {@code ==}
+                 */
                 if ( s.equals( inputLang ) ) {
                     selectedLang = true;
+                    /* 
+                     * {@value #actLang}
+                     */
                     actLang = inputLang;
-                    //System.out.println("inputLang= " + actLang);
+                    System.out.println("selected language: " + actLang);
                     break;
                 }            
         }
@@ -251,8 +268,13 @@ public class App
         
     }
   
+    /* 
+     * @see #method(finishApp)
+     */
     public static void finishApp() {
-        
+        /* 
+         * Uses {@code equals()} and not {@code ==}
+         */
         if(actLang.equals( "English" ))
             System.out.println("Card game finished." );
         else

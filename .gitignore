@@ -27,6 +27,8 @@ hs_err_pid*
 
 # Environment
 GI_Environment.txt
+G3_Environment.txt
 
 # Logging file
 GI_Logging.xml
+G3_Logging.xml

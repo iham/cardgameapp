@@ -14,7 +14,7 @@ import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 import msc.ddb.international.utils.Name;
 
-/* 
+/** 
  * <p><b> Game Class</b></p>
  * <p><i> Specialization of Class Name </i></p> 
  */
@@ -38,7 +38,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @return int
+     * @return int (#minimumPlayers)
      */
     public int getMinimumPlayers() {
         return minimumPlayers;
@@ -46,7 +46,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param minimumPlayers
+     * @param minimumPlayers (#minimumPlayers)
      */
     public void setMinimumPlayers(int minimumPlayers) throws MinimumPlayersBelowAllowedMinimumException, MinimumPlayersBeyondAllowedMaximumException {
         if(minimumPlayers <= maximumPlayers) {
@@ -70,8 +70,8 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param maximumPlayers ()
-     * @throws MaximumPlayersBelowAllowedMinimumException
+     * @param maximumPlayers (#maximumPlayers for this game)
+     * @throws MaximumPlayersBelowAllowedMinimumException 
      * @throws MaximumPlayersBeyondAllowedMaximumException
      */
     public void setMaximumPlayers(int maximumPlayers) throws MaximumPlayersBelowAllowedMinimumException, MaximumPlayersBeyondAllowedMaximumException {
@@ -88,7 +88,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @return Person
+     * @return Person (Dealer)
      */
     public Person getDealer() {
         return dealer;
@@ -96,7 +96,7 @@ public abstract class Game extends Name {
     
     
     /** 
-     * @param dealer
+     * @param dealer (Dealer)
      */
     private void setDealer(Dealer dealer) {
         this.dealer = dealer;
@@ -104,7 +104,7 @@ public abstract class Game extends Name {
     
     
     /** 
-     * @return ArrayList<Person>
+     * @return ArrayList<Person> (players)
      */
     public ArrayList<Person> getPlayers() {
         return players;
@@ -112,7 +112,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param player
+     * @param player (add player check maximumSize of Players)
      */
     // Set Players - no getters and setters needed here.
     public void addPlayer(Person player) throws TooManyPlayersException {
@@ -125,8 +125,8 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param player
-     * @param card
+     * @param player (person)
+     * @param card (card)
      */
     public void addCardToHand(Person player, Card card) {
         int value = getValueForCard(card);
@@ -138,7 +138,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @return Deck
+     * @return Deck (deck)
      */
     public Deck getDeck() {
         return deck;
@@ -146,7 +146,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param deck
+     * @param deck (deck)
      */
     public void setDeck(Deck deck) {
         this.deck = deck;
@@ -160,7 +160,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @param player
+     * @param player (person)
      * @return boolean (Is the player continuing the game 0|1)
      */
     public boolean isPlayerContinuing(Person player) {
@@ -191,7 +191,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @return String (Stringbuilde = a mutable sequence of characters will be returned containing the status of the hand)
+     * @return String (Stringbuilder = a mutable sequence of characters will be returned containing the status of the hand)
      */
     public String createGameReport() {
         StringBuilder report = new StringBuilder();
@@ -203,7 +203,7 @@ public abstract class Game extends Name {
 
     
     /** 
-     * @return String
+     * @return String (name of the Game)
      */
     public String toString() {
         return getName() + "\n" + createGameReport();
