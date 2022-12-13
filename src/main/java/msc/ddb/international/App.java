@@ -70,9 +70,9 @@ public class App
         // boolean isDealer = (dealer instanceof Dealer);
 
         
-        startLogging();
-        getEnvironment();
-        consoleChooseLanguage();
+        // startLogging();
+        // getEnvironment();
+        // consoleChooseLanguage();
         
         try {
             BlackJack game = new BlackJack();
@@ -89,7 +89,7 @@ public class App
             e.printStackTrace();
         }
 
-        finishApp();
+        // finishApp();
     
     }
 

@@ -203,7 +203,7 @@ public class BlackJack extends Game {
         else if(player.getHand().calculateHand() < 17) {
             decision = true;
         }
-        System.out.println(player + " decided to " + ((decision == true) ? "continue" : "stall"));
+        // System.out.println(player.getName() + " decided to " + ((decision == true) ? "continue" : "stall"));
 
         return decision;
     }
@@ -262,15 +262,14 @@ public class BlackJack extends Game {
 
     @Override
     public void startGame() {
-        System.out.println("Game starts");
-        System.out.println(createGameReport());
+        System.out.println("\n====================\nGame starts\n\n\n");
         int round = 1;
         while(gameHasParticipants() == true) {
             System.out.println("Round " + round + " started\n");
             getPlayers().forEach(player -> {
-                System.out.println(player.getName() + "'s turn.\n");
-                System.out.println(createPlayerReport(player));
                 if(isPlayerParticipating(player) == true) {
+                    System.out.println("\nIt is " + player.getName() + "'s turn:");
+                    System.out.println(createPlayerReport(player));
                     if(isPlayerContinuing(player) == true) {
                         Card card = getDeck().pickCard();
                         player.getHand().addCard(card, getValueForCard(card));
@@ -287,7 +286,7 @@ public class BlackJack extends Game {
     @Override
     public void endGame() {
         setFinalStates();
-        System.out.println(getName() + " is finished.");
+        System.out.println("\n\n\n" + getName() + " is finished.");
         System.out.println(createGameReport());;
     }
 
@@ -295,11 +294,7 @@ public class BlackJack extends Game {
     public String createPlayerReport(Person player) {
         StringBuilder report = new StringBuilder();
         Hand hand = player.getHand();
-        report.append(player.getName() + " is in state \"" + getPlayerState(player) + "\" and has Hand: \n");
-        hand.getCards().forEach((Card card, Integer value) -> {
-            report.append(card + "\n");
-        });
-        report.append("Total: " + hand.calculateHand() + "\n\n");
+        report.append(player.getName() + " is in state \"" + getPlayerState(player) + "\" and has " + hand);
         return report.toString();
     }
 

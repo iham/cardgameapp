@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-12-12T16:46:11.608498200Z</date>
-  <millis>1670863571608</millis>
-  <nanos>498200</nanos>
+  <date>2022-12-13T15:16:15.845088920Z</date>
+  <millis>1670944575845</millis>
+  <nanos>88920</nanos>
   <sequence>0</sequence>
   <logger>msc.ddb.international.App</logger>
   <level>INFO</level>
@@ -14,15 +14,27 @@
   <message>Start Logging with Java Util Logging (G3_Logging.xml)</message>
 </record>
 <record>
-  <date>2022-12-12T16:46:11.814466200Z</date>
-  <millis>1670863571814</millis>
-  <nanos>466200</nanos>
+  <date>2022-12-13T15:16:15.988438087Z</date>
+  <millis>1670944575988</millis>
+  <nanos>438087</nanos>
   <sequence>1</sequence>
   <logger>msc.ddb.international.App</logger>
   <level>INFO</level>
   <class>msc.ddb.international.App</class>
   <method>getEnvironment</method>
   <thread>1</thread>
-  <message>Write Environments: Admin</message>
+  <message>Write Environments: vscode</message>
+</record>
+<record>
+  <date>2022-12-13T15:16:19.273188213Z</date>
+  <millis>1670944579273</millis>
+  <nanos>188213</nanos>
+  <sequence>2</sequence>
+  <logger>msc.ddb.international.App</logger>
+  <level>INFO</level>
+  <class>msc.ddb.international.App</class>
+  <method>consoleChooseLanguage</method>
+  <thread>1</thread>
+  <message>selected language: German</message>
 </record>
 </log>

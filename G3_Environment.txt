@@ -1,10 +1,10 @@
-UUID      13326618-36e6-495d-a757-32600690369b
-Instant   2022-12-12T16:46:11.581042400Z
-LDateTime 2022-12-12T17:46:11.648907700
-Hostname  STTNBI10
-IPAddress 10.0.0.12
-JavaHome  C:\Users\Admin.ORA\.vscode\extensions\redhat.java-1.13.0-win32-x64\jre\17.0.5-win32-x86_64
-OSName    Windows 10
-UserName  Admin
+UUID      d38c02a3-61ab-4675-9e7b-13f859dc0223
+Instant   2022-12-13T15:16:15.827630087Z
+LDateTime 2022-12-13T15:16:15.896446337
+Hostname  b3c2fdeb3a1d
+IPAddress 172.17.0.2
+JavaHome  /home/vscode/.vscode-server/extensions/redhat.java-1.13.0-linux-arm64/jre/17.0.5-linux-aarch64
+OSName    Linux
+UserName  vscode
 JavaVers  17.0.5
 --------------------------------------------------------------------------------------------------------------------
