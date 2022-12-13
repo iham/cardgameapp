@@ -16,7 +16,7 @@ import msc.ddb.international.utils.Name;
 
 /* 
  * <p><b> Game Class</b></p>
- * <p><i> Specialization of Name Class </i></p> 
+ * <p><i> Specialization of Class Name </i></p> 
  */
 
 public abstract class Game extends Name {
