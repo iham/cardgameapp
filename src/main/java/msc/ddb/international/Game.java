@@ -185,11 +185,7 @@ public abstract class Game extends Name {
     public String createPlayerReport(Person player) {
         StringBuilder report = new StringBuilder();
         Hand hand = player.getHand();
-        report.append(player.getName() + "\" and has Hand: \n");
-        hand.getCards().forEach((Card card, Integer value) -> {
-            report.append(card + "\n");
-        });
-        report.append("Total: " + hand.calculateHand() + "\n\n");
+        report.append(player.getName() + "\" and has " + hand);
         return report.toString();
     }
 
@@ -200,7 +196,7 @@ public abstract class Game extends Name {
     public String createGameReport() {
         StringBuilder report = new StringBuilder();
         players.forEach(player -> {
-            report.append(createPlayerReport(player) + "\n");
+            report.append(createPlayerReport(player) + "\n\n");
         });
         return report.toString();
     }

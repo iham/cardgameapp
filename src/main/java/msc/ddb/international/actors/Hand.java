@@ -55,11 +55,9 @@ public class Hand {
     public String toString() {
         StringJoiner output = new StringJoiner(", ");
         cards.forEach((Card card, Integer value) -> {
-            String c = card.toString();
-            c = c.substring(0, c.length() - 1);
-            output.add(String.format("%s, %d]", c, value));
+            output.add(String.format("%s (%d)", card.getName(), value));
         });
-        return String.format("Hand [cards=%s, sum=%d]", output.toString(), calculateHand());
+        return String.format("Hand:\n%s\nTotal: %d", output.toString(), calculateHand());
     }
 
 

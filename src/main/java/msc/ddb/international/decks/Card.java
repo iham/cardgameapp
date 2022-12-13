@@ -16,11 +16,13 @@ public class Card extends Name {
         super("");
         this.rank = rank;
         this.suit = suit;
+        setName();
     }
 
     public Card(String rank) {
         super("");
         this.rank = rank;
+        setName();
     }
 
     public String getRank() {
