@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: DDB D2 International "
+"<hannes.brottrager@stiftadmont.at>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+
+msgid "Programmstart"
+msgstr "Program start"
+
+msgid "Stapel"
+msgstr "Stack"
+
+msgid "Spieler"
+msgstr "Players"
+
+msgid "du hast leider verloren!"
+msgstr "you have unfortunately lost!"
+
+msgid "du hast gewonnen"
+msgstr "you have won"
+
+msgid "diese Karten wurden gewählt"
+msgstr "these cards were chosen"
+
+msgid "Laufzeit"
+msgstr "Runtime"
+
+msgid "Kartenspiel beendet."
+msgstr "Card game finished."
+
+msgid "Spielen wir Schnapsen!"
+msgstr "Let's play Schnapsen!"
+
+msgid "Spielen wir ein Uno Spiel!"
+msgstr "Let's play a game of Uno!"
+
+#, fuzzy
+msgid "Spielen wir ein BlackJack Spiel!"
+msgstr "Let's play a game of BlackJack!"
+
+msgid ""
+"Wähle eine Sprache: (Deutsch | Englisch)"
+msgstr ""
+"Choose a language: (German | English)"
+
+msgid ""
+"Starten Logging mit 'JUL' (Java Util "
+"Logging)"
+msgstr ""
+"Start logging with 'JUL' (Java Util "
+"Logging)"
+
+msgid ""
+"Fehler! - Fehler bei Schreiben Datei - "
+"Logging mit 'JUL' (Java Util Logging)"
+msgstr ""
+"Error! - Error writing file - logging "
+"with 'JUL' (Java Util Logging)"
+
+msgid "Datei kann nicht gespeichert werden"
+msgstr "File cannot be saved"
+
+msgid "Wähle ein Kartenspiel"
+msgstr "Choose a card game"
+
+msgid "kann man nicht in Zahl konvertieren"
+msgstr "cannot be converted to number"

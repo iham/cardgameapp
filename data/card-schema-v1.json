@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema", 
+    "type": "object",
+    "required": ["cardGame"],
+    "properties": {
+        "cardGame": {
+            "type": "string",
+            "description": "Name of the Card Game",
+            "pattern": "[A-Z]"
+        },
+        "nameGame": {
+            "type": "string"
+        },
+        "cards": {
+            "type": "object",
+            "required": ["id","name"],
+            "properties": {
+                "id":{
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 130,
+                    "description": "eindeutige lfd. Ganzzahl je Spiel"
+                },
+                "name": {
+                    "type": "string",
+                    "pattern": "[a-z][0-9]"
+                },    
+                "color": {
+                    "type": "string",
+                    "enum": ["black","red","green","blue","yellow","orange","gray","pink","white","cyan"]
+                },
+                "symbol": {
+                    "type": "string",
+                    "enum": ["number","action"]
+                }
+            }
+        },
+        "self": {
+            "type": "string",
+            "format": "uri"
+        }
+    },
+    "additionalProperties": false
+}
