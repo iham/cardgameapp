@@ -76,8 +76,6 @@ public class App
         
         try {
             BlackJack game = new BlackJack();
-            game.setMinimumPlayers(0);
-            game.setMaximumPlayers(1);
             game.addPlayer(new Player("Harald"));
             // game.addPlayer(new Player("Eric"));
             // game.addPlayer(new Player("Felix"));
@@ -88,14 +86,6 @@ public class App
         } catch (TooManyPlayersException e) {
             e.printStackTrace();
         } catch (NotEnoughPlayersException e) {
-            e.printStackTrace();
-        } catch (MinimumPlayersBelowAllowedMinimumException e) {
-            e.printStackTrace();
-        } catch (MinimumPlayersBeyondAllowedMaximumException e) {
-            e.printStackTrace();
-        } catch (MaximumPlayersBelowAllowedMinimumException e) {
-            e.printStackTrace();
-        } catch (MaximumPlayersBeyondAllowedMaximumException e) {
             e.printStackTrace();
         }
 
