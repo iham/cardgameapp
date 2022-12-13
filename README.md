@@ -6,7 +6,7 @@ Playing Cards is FUN!
 ## Team
 - Eric Langer (Docs for Code)
 - Felix Ossmann (Testing)
-- Hannes Brottrager (Logging/Data)
+- Hannes Brottrager (Logging/Data/Exceptions/Console)
 - Markus Hilbert (Lead/Architecture)
 
 ## Targets

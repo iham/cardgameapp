@@ -8,6 +8,8 @@ import msc.ddb.international.actors.Hand;
 import msc.ddb.international.actors.Person;
 import msc.ddb.international.decks.Card;
 import msc.ddb.international.decks.Deck;
+import msc.ddb.international.exceptions.NotEnoughPlayersException;
+import msc.ddb.international.exceptions.TooManyPlayersException;
 
 public class BlackJack extends Game {
     // states
@@ -16,18 +18,18 @@ public class BlackJack extends Game {
     // utils we use within the game
     private Scanner input = new Scanner(System.in);
 
-    public BlackJack() {
+    public BlackJack() throws TooManyPlayersException {
         super("BlackJack (17+4)");
         addDealerToPlayers(getDealer());
     }
     
     @Override
-    public void addPlayer(Person player) {
+    public void addPlayer(Person player) throws TooManyPlayersException {
         super.addPlayer(player);
         initializeStateOfPlayer(player);
     }
 
-    public void addDealerToPlayers(Person dealer) {
+    public void addDealerToPlayers(Person dealer) throws TooManyPlayersException {
         // if dealer isn't set, do that upfront
         if(!getPlayers().contains(dealer)) {
             addPlayer(dealer);
@@ -249,14 +251,13 @@ public class BlackJack extends Game {
     }
 
     @Override
-    public void initializeGame() {
+    public void initializeGame() throws NotEnoughPlayersException {
         if(getDealer() != null && getPlayers().size() >= getMinimumPlayers()) {
             setDeck(new Deck(6));
             initialDeal();
         }
         else
-            // TODO: throw Exception here
-            System.out.println("you need at least " + getMinimumPlayers() + " to play.");
+            throw new NotEnoughPlayersException("You need at least " + getMinimumPlayers() + " to play.");;
     }
 
     @Override
@@ -272,9 +273,9 @@ public class BlackJack extends Game {
                 if(isPlayerParticipating(player) == true) {
                     if(isPlayerContinuing(player) == true) {
                         Card card = getDeck().pickCard();
-                        System.out.println(player.getName() + " picks card: " + card + "\n");
                         player.getHand().addCard(card, getValueForCard(card));
                         setPlayerState(player);
+                        System.out.println(createPlayerReport(player));
                     }
                 }   
             });
