@@ -72,6 +72,10 @@ public class App
         try {
             BlackJack game = new BlackJack();
             game.addPlayer(new Player("Harald"));
+            game.addPlayer(new Player("Eric"));
+            game.addPlayer(new Player("Felix"));
+            game.addPlayer(new Player("Hannes"));
+            game.addPlayer(new Player("Markus"));
             game.initializeGame();
             game.startGame();                
         } catch (TooManyPlayersException e) {
