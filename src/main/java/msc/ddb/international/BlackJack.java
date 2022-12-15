@@ -247,6 +247,8 @@ public class BlackJack extends Game {
     public void initialDeal() {
         // each player gets two card when the game starts
         Deck deck = getDeck();
+        System.out.println("\n====================\nGame starts\n\n\n");
+        System.out.println("Initial Deal:\n");
         getPlayers().forEach((Person player) -> {
             Card card;
             Hand hand = player.getHand();
@@ -255,6 +257,7 @@ public class BlackJack extends Game {
             card = deck.pickCard();
             hand.addCard(card, getValueForCard(card));
             setPlayerState(player);
+            System.out.println(createPlayerReport(player) + "\n\n");
         });
     }
 
@@ -270,7 +273,6 @@ public class BlackJack extends Game {
 
     @Override
     public void startGame() {
-        System.out.println("\n====================\nGame starts\n\n\n");
         int round = 1;
         while(gameHasParticipants() == true) {
             System.out.println("Round " + round + " started\n");

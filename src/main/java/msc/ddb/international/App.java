@@ -29,10 +29,6 @@ import static java.util.Locale.*;
  */
 
 import msc.ddb.international.actors.Player;
-import msc.ddb.international.exceptions.MaximumPlayersBelowAllowedMinimumException;
-import msc.ddb.international.exceptions.MaximumPlayersBeyondAllowedMaximumException;
-import msc.ddb.international.exceptions.MinimumPlayersBelowAllowedMinimumException;
-import msc.ddb.international.exceptions.MinimumPlayersBeyondAllowedMaximumException;
 import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
@@ -69,17 +65,6 @@ public class App
      */
     public static void main( String[] args )
     {
-        // Hand hand = new Hand();
-        // hand.addCard(new Card("Jack"), 10);
-        // hand.addCard(new Card("5"), 10);
-
-        // Person player = new Player("Markus", hand);
-        
-        // Person dealer = new Dealer("Markus", hand);
-        // System.out.println(((Person)dealer).equals((Person)player));
-        // System.out.println(player.equals(dealer));
-        // boolean isDealer = (dealer instanceof Dealer);
-
         startLogging();
         getEnvironment();
         consoleChooseLanguage();
