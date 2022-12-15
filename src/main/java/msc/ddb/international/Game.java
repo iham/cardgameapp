@@ -17,6 +17,9 @@ import msc.ddb.international.utils.Name;
 /** 
  * <p><b> Game Class</b></p>
  * <p><i> Specialization of Class Name </i></p> 
+ * 
+ * @author Markus Hilbert
+ * 
  */
 
 public abstract class Game extends Name {
@@ -71,8 +74,8 @@ public abstract class Game extends Name {
     
     /** 
      * @param maximumPlayers (#maximumPlayers for this game)
-     * @throws MaximumPlayersBelowAllowedMinimumException 
-     * @throws MaximumPlayersBeyondAllowedMaximumException
+     * @throws MaximumPlayersBelowAllowedMinimumException (Exception if )
+     * @throws MaximumPlayersBeyondAllowedMaximumException (Exception if )
      */
     public void setMaximumPlayers(int maximumPlayers) throws MaximumPlayersBelowAllowedMinimumException, MaximumPlayersBeyondAllowedMaximumException {
         if(maximumPlayers >= minimumPlayers) {
@@ -117,10 +120,11 @@ public abstract class Game extends Name {
     // Set Players - no getters and setters needed here.
     public void addPlayer(Person player) throws TooManyPlayersException {
         if(players.size() < maximumPlayers) {
-            players.add(player);
+            players.add(player);            
         }
         else
             throw new TooManyPlayersException("Game already has " + getPlayers().size() + " players; the allowed maximum is "+ getMaximumPlayers() + ".");
+
     }
 
     

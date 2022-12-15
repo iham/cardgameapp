@@ -4,24 +4,29 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import static java.time.Instant.now;
+
 import static java.time.temporal.ChronoUnit.MILLIS;
-import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.UUID;
 
-/* 
- * @see <a href = "spec.html#section">Java Spec</a>
- */
-import java.net.InetAddress;
+import java.io.IOException;
 import java.net.UnknownHostException;
 
+import java.net.InetAddress;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import static java.time.Instant.now;
+import java.util.UUID;
+
 import static java.util.Locale.*;
+
+/**
+ * @see <a href = "spec.html#section">Java Spec</a>
+ * 
+ */
 
 import msc.ddb.international.actors.Player;
 import msc.ddb.international.exceptions.MaximumPlayersBelowAllowedMinimumException;
@@ -32,16 +37,19 @@ import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
 
-/*
+/**
  * <p><b> CardGameApp </b></p>
  * <p><i> written by the specialist Markus Hilbert and his 'international' boygroup (Felix, Eric, Hannes)</i></p>
  * 
  * @author Markus Hilbert
+ * @version 4.4
  * 
  */
 public class App 
 {
-    public static Scanner input = new Scanner(System.in); // Instantiation Input
+    public static Scanner input = new Scanner(System.in);
+    
+    // Instantiation Input
 
     private static String actLang = "English"; // Variable = Camelcase
     private static final String FILENAME_ENVIRONMENT = "GI_Environment.txt"; // Filename = Konstante
@@ -55,6 +63,7 @@ public class App
     public static final String standardLanguage = GERMANY.getDisplayLanguage();
     public static final String standardLanguageEN = GERMANY.getDisplayLanguage(ENGLISH);
 
+    
     /** 
      * @param args (no arguments required)
      */
@@ -71,24 +80,21 @@ public class App
         // System.out.println(player.equals(dealer));
         // boolean isDealer = (dealer instanceof Dealer);
 
-        
         startLogging();
         getEnvironment();
         consoleChooseLanguage();
-        
+
         try {
             BlackJack game = new BlackJack();
             game.addPlayer(new Player("Harald"));
-            // game.addPlayer(new Player("Eric"));
-            // game.addPlayer(new Player("Felix"));
-            // game.addPlayer(new Player("Hannes"));
-            // game.addPlayer(new Player("Markus"));
             game.initializeGame();
             game.startGame();                
         } catch (TooManyPlayersException e) {
             e.printStackTrace();
+            log.warning("Warning - To many players in the game!");
         } catch (NotEnoughPlayersException e) {
             e.printStackTrace();
+            log.warning ("Warning - Not enough players in the game!");
         }
 
         finishApp();
@@ -115,10 +121,8 @@ public class App
             log.log(Level.WARNING, "Error while creating the logfile (" + FILENAME_LOGGING + ")", e);
         }
         log.info ("Start Logging with Java Util Logging (" + FILENAME_LOGGING + ")");
-        
     }
 
-    
     /** 
      * @param contentParam (String content Parameter for Environment)
      */
@@ -165,6 +169,10 @@ public class App
         String content = "UUID      " + UUID.randomUUID() + "\n" + "Instant   " + start + "\n" + "LDateTime " + localDateTime + "\n";
 
         // If file exists, it will be deleted
+
+        /**
+         * @depreceated Paths.get in future release not support - use Paths.of instead
+         */
         Path path = Paths.get( FILENAME_ENVIRONMENT );
 
         try {
@@ -183,25 +191,27 @@ public class App
             log.severe("Error! - Error deleting file - Logging with 'JUL' (Java Util Logging)");
         }
         finally {
-            System.out.println("File (" + FILENAME_ENVIRONMENT + ") wurde geschrieben");
+            System.out.println("File write New (" + FILENAME_ENVIRONMENT + ") block finally");
+            log.info("Info - File write new (" + FILENAME_ENVIRONMENT + ") block finally");
         }
 
         System.out.println("\n===>> Environment <<===");
 
-        // InetAddress - Exception required!!!
+       
         try {
             String Computer_Name = InetAddress.getLocalHost().getHostName();
             String IP_Address = InetAddress.getLocalHost().getHostAddress();
-            
-            content = "Hostname  " + Computer_Name + "\n";
-            writeEnvironmentFile(content);
-            content = "IPAddress " + IP_Address + "\n";
-            writeEnvironmentFile(content);
-        } catch (UnknownHostException e) {
+
+
+            writeEnvironmentFile("Hostname  " + Computer_Name + "\n");
+            writeEnvironmentFile("IPAddress " + IP_Address + "\n");
+        } 
+        catch (UnknownHostException e) {
             System.out.println("Error: UnknownHostException!");
-            log.severe("Error! - Error writing file (" + FILENAME_ENVIRONMENT + ")");
+            log.severe("Error! - Error unknown host (" + FILENAME_ENVIRONMENT + ")");
         }
 
+         
         String Java_Home = System.getProperty("java.home","/tmp/java");
         String OS = System.getProperty("os.name","Linux");
         String User_Name = System.getProperty("user.name","John Doe");
@@ -254,6 +264,7 @@ public class App
                      */
                     actLang = inputLang;
                     System.out.println("selected language: " + actLang);
+                    log.info ("Selected language (" + actLang + ")");
                     break;
                 }            
         }
@@ -261,7 +272,7 @@ public class App
         if ( actLang.equals( "X" )) {
             actLang = standardLanguageEN;
             System.out.println("Program Exit");
-            log.info ("Program Exit: " + actLang);
+            log.info ("Program Exit: (" + actLang + ")");
             finishApp();
         }
         log.info ("selected language: " + actLang);
@@ -281,8 +292,20 @@ public class App
             System.out.println("Translation (" + actLang + ") not implemented yet!" );
 
         System.out.println("\n");
-        log.info( () -> String.format( "Runtime %s ms", start.until( now(), MILLIS))) ;
-        handlerLog.close();        
-
+        log.info ( () -> String.format( "Runtime %s ms", start.until( now(), MILLIS))) ;
+        
+        try {
+            handlerLog.close();            
+        } 
+        catch (NullPointerException e) {
+            System.err.println("File (" + FILENAME_LOGGING + ") NULLPointer not defined");
+            e.printStackTrace();     
+            log.severe("Error! - Error closing Loghandler (" + FILENAME_LOGGING + ")");
+        }
+        catch (SecurityException e) {
+            System.err.println("File (" + FILENAME_LOGGING + ") cannot be closed");
+            e.printStackTrace();     
+            log.severe("Error! - Error closing Loghandler (" + FILENAME_LOGGING + ") not privileged");
+        }
     }
 }

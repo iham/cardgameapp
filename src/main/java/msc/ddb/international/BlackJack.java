@@ -8,12 +8,15 @@ import msc.ddb.international.actors.Hand;
 import msc.ddb.international.actors.Person;
 import msc.ddb.international.decks.Card;
 import msc.ddb.international.decks.Deck;
+
 import msc.ddb.international.exceptions.NotEnoughPlayersException;
 import msc.ddb.international.exceptions.TooManyPlayersException;
 
 /** 
  * <p><b> Game Class</b></p>
  * <p><i> Specialization of Class Game </i></p> 
+ * @author Markus Hilbert
+ * 
  */
 
 public class BlackJack extends Game {

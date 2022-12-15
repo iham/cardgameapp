@@ -10,7 +10,14 @@ import msc.ddb.international.exceptions.TooManyPlayersException;
 
 /**
  * Unit test for simple App.
+ * 
+ * <p><b> CardGameApp Unit test </b></p>
+ * 
+ * @author Felix Ossmann
+ * @version 4.1
+ * 
  */
+ 
 public class AppTest 
 {
     /**
@@ -32,6 +39,4 @@ public class AppTest
             e.printStackTrace();
         }
     }
-
-    
 }
