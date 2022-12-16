@@ -21,8 +21,8 @@ Create a small but extendable project in Java using OOP concepts and prozedures.
 ### OOP
 - [x] Encapsulation
 - [x] Inheritance
-- [~] Abstraction
-- [ ] Interfaces
+- [x] Abstraction
+- [x] Interfaces
 - [x] Types
 - [x] Enumeration
   - [x] Primitive Types
@@ -40,18 +40,18 @@ Create a small but extendable project in Java using OOP concepts and prozedures.
 
 ### Java STD Classes:
 - [x] Scanner (Terminal input)
-- [ ] StringBuffer
-- [~] File I/O
-- [~] Date
+- [x] StringBuffer
+- [x] File I/O
+- [x] Date
 
 ### Frameworks
-- [~] Logging via java.util.logging.*
-- [~] Testing via "JUnit"
+- [x] Logging via java.util.logging.*
+- [x] Testing via "JUnit"
 - [x] Code versioning via GIT
 
 ### Documentation
 - [x] Write a project documentation in MarkDown
-- [~] Write a code documentation with javadoc
+- [x] Write a code documentation with javadoc
 
 ## NOT targets
 - a (G)UI
