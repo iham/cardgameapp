@@ -1,5 +1,5 @@
 # Exercise project "CardGameApp"
-Playing Cards is FUN!
+Playing Cards is FUN!!!
 
 ![Logo](logo.jpg)
 
